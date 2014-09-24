@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: Af0KHuohdgB7wrkmCHP2wFz0qbRUSrUWT14rMsoljfum5CNDGWlDOrf2s6zZWlrScZ32dJY0W6Z8jQTHau3qNq9Ia44AoUT68zkyZjymqLoVztpsRXiMTfpoxM0iQZMiH4OA8i9pzyxgIcLe2/9ER1PXxZN3GnZw+Ika5KliHDk=
+  app: pacific-dawn-8716
+  on:
+    repo: harakoji/socio_quiz
+addons:
+postgresql: "9.3"
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
