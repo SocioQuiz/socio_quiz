@@ -9,7 +9,7 @@ deploy:
   run:
     - "rake db:migrate"
   on:
-    repo: harakoji/socio_quiz
+    repo: SocioQuiz/socio_quiz
 addons:
 postgresql: "9.3"
 before_script:
