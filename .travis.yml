@@ -10,9 +10,3 @@ deploy:
     - "rake db:migrate"
   on:
     repo: SocioQuiz/socio_quiz
-addons:
-postgresql: "9.3"
-before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- cp config/database.yml.travis config/database.yml
-
