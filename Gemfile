@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+# We think here is not need, because lasted bundle will automatic choose the ruby's version for us. If it has a problem about ruby version in across platfrom please take the comment below out.
+#ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
