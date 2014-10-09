@@ -15,13 +15,16 @@
         <td><%= quiz.question %></td>
         <td><%= quiz.answer %></td>
         <td><%= link_to 'Show', quiz %></td>
+        <% if user_signed_in? %>
         <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
         <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Quiz', new_quiz_path %>
+<% end %>
