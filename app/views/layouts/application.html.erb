@@ -12,12 +12,13 @@
 <% if user_signed_in? %>
   <strong><%= current_user.email %></strong> |
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> 
   <div id="status"></div>
 <% else %>
   <%= link_to "Sign up for SocioQuiz", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %>
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+  <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %> | 
+  <%= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook), :class => 'navbar-link' %>
+  <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 <% end %>
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -27,7 +28,7 @@
 <% end %>
 <%= yield %>
 <!-- Here is an example login code (Enable cookie in order to do omniauth-facebook) Javascript version -->
-<script>
+<!--<script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -61,7 +62,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-        appId      : '1470979709830870',//Add your facebook app ID here.
+        appId      : '<% ENV['FACEBOOK_APP_KEY'] %>',//Add your facebook app ID here.
         cookie     : true,  // enable cookies to allow the server to access
                         // the session
         xfbml      : true,  // parse social plugins on this page
@@ -109,7 +110,7 @@
         // Person is now logged out
     });
   }
-</script>
+</script>-->
 
 
 </body>
