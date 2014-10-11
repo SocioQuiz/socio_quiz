@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  #skip_before_filter :authenticate_user
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
@@ -36,7 +37,9 @@ class QuizzesController < ApplicationController
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
+
   end
+
 
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
