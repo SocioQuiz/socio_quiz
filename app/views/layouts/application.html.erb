@@ -13,9 +13,11 @@
   <strong><%= current_user.email %></strong> |
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <div id="status"></div>
 <% else %>
   <%= link_to "Sign up for SocioQuiz", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %>
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 <% end %>
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -44,8 +46,7 @@
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML = '';
     }
   }
 
@@ -104,23 +105,12 @@
         'Thanks for logging in, ' + response.name + '!\r\n' + response.email;
     });
 
-        FB.logout(function(response) {
-                // Person is now logged out
-        });
+    FB.logout(function(response) {
+        // Person is now logged out
+    });
   }
 </script>
 
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
-
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status">
-</div>
 
 </body>
 </html>
