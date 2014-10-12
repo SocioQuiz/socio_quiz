@@ -18,7 +18,7 @@
           <%= link_to 'Show', quiz, :class => "btn btn-default active" %>
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_quiz_path(quiz), :class=>"btn btn-default active" %>
-          <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger active" %>>
+          <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger active" %>
         <% end %>
       </td>
       </tr>
