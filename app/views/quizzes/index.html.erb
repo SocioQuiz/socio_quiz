@@ -5,6 +5,7 @@
     <tr>
       <th>Question</th>
       <th>Answer</th>
+      <th>Created by</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,11 @@
       <tr>
         <td><%= quiz.question %></td>
         <td><%= quiz.answer %></td>
+        <td>
+        <% if quiz.user %>
+          <%= quiz.user.email %>
+        <% end %>
+        </td>
         <td>
           <%= link_to 'Show', quiz, :class => "btn btn-default active" %>
         <% if user_signed_in? %>

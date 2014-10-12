@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
     end
     user
   end
+  has_many :quizzes
 end
