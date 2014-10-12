@@ -13,7 +13,7 @@
   <strong><%= current_user.email %></strong> |
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> 
-  <div id="status"></div>
+  <div id="status" style="border: 1px solid"></div>
 <% else %>
   <%= link_to "Sign up for SocioQuiz", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %> | 
