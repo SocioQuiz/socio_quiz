@@ -19,6 +19,7 @@
     <%= f.label :answer %><br>
     <%= f.text_field :answer %>
   </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
