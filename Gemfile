@@ -43,3 +43,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
