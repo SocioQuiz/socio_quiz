@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe QuizzesController, :type => :controller do
+RSpec.describe QuizzesController, type: :controller do
   describe '#index' do
     it 'return status 200' do
       get :index
