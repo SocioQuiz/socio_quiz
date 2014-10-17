@@ -51,4 +51,5 @@ gem 'http_accept_language'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'rubocop'
 end

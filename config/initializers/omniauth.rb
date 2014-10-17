@@ -8,8 +8,8 @@
 ##Rails.application.config.middleware.use OmniAuth::Builder do
 ##	  provider :facebook, ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET'],
 ##		   :scope => 'email',
-		   #:scope => 'fb_permissions', 
-##		   :provider_ignores_state => true, 
-##		   :response_type => 'token', 
+		   #:scope => 'fb_permissions',
+##		   :provider_ignores_state => true,
+##		   :response_type => 'token',
 ##		   :display => 'page'
 ##end
