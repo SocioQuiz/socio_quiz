@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-# We think here is not need, because lasted bundle will automatic choose the ruby's version for us. If it has a problem about ruby version in across platfrom please take the comment below out.
-#ruby '2.1.2'
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -44,3 +43,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
