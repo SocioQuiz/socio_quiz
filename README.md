@@ -1,17 +1,16 @@
 ```text
-
-For all people
-Who love quiz,
- ____             _          ___        _
-/ ___|  ___   ___(_) ___    / _ \ _   _(_)____
-\___ \ / _ \ / __| |/ _ \  | | | | | | | |_  /
- ___) | (_) | (__| | (_) | | |_| | |_| | |/ /
-|____/ \___/ \___|_|\___/   \__\_\\__,_|_/___|
- 
-is a quiz platform
-that can provide many exciting quiz
-Unlike Boring advertising
-our product is provide pleasurable quiz format ads.
+====================================================
+#   ____             _          ___        _       #
+#  / ___|  ___   ___(_) ___    / _ \ _   _(_)____  #
+#  \___ \ / _ \ / __| |/ _ \  | | | | | | | |_  /  #
+#   ___) | (_) | (__| | (_) | | |_| | |_| | |/ /   #
+#  |____/ \___/ \___|_|\___/   \__\_\\__,_|_/___|  #
+#                                                  #
+==================================================== 
+Socio Quiz is a quiz service platfrom for all people 
+who love quiz. The platfrom provides quizing services 
+with many exciting quiz that has generating by all of
+you. 
 
 ```
 
