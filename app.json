@@ -1,0 +1,14 @@
+{
+  "name": "SocioQuiz",
+  "description": "Social Quiz Network",
+  "keywords": [
+    "social",
+    "quiz",
+    "ruby on rails"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "website": "http://pacific-dawn-8716.herokuapp.com",
+  "repository": "https://github.com/SocioQuiz/socio_quiz"
+}
