@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012124824) do
+ActiveRecord::Schema.define(version: 20141018171455) do
+
   create_table "quizzes", force: true do |t|
     t.string   "question"
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "type"
+    t.string   "selection_1"
+    t.string   "selection_2"
+    t.string   "selection_3"
+    t.string   "selection_4"
+    t.string   "selection_5"
+    t.string   "selection_6"
+    t.string   "selection_7"
+    t.string   "selection_8"
+    t.string   "selection_9"
+    t.integer  "point"
   end
 
   create_table "users", force: true do |t|
@@ -36,9 +48,9 @@ ActiveRecord::Schema.define(version: 20141012124824) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
 end

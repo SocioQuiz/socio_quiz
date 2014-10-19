@@ -19,6 +19,50 @@
     <%= f.label :answer %><br>
     <%= f.text_field :answer %>
   </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_1 %><br>
+    <%= f.text_field :selection_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_2 %><br>
+    <%= f.text_field :selection_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_3 %><br>
+    <%= f.text_field :selection_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_4 %><br>
+    <%= f.text_field :selection_4 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_5 %><br>
+    <%= f.text_field :selection_5 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_6 %><br>
+    <%= f.text_field :selection_6 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_7 %><br>
+    <%= f.text_field :selection_7 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_8 %><br>
+    <%= f.text_field :selection_8 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_9 %><br>
+    <%= f.text_field :selection_9 %>
+  </div>
+  <div class="field">
+    <%= f.label :point %><br>
+    <%= f.text_field :point %>
+  </div>
   <% if user_signed_in? %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
