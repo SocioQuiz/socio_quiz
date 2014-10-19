@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
                          password: Devise.friendly_token[0,20]
                         )
     end
-    user
+    return user
   end
   has_many :quizzes
 end
