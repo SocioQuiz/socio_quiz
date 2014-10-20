@@ -8,5 +8,6 @@ deploy:
   app: pacific-dawn-8716
   run:
     - "rake db:migrate"
+    - "rake db:migrate:status"
   on:
     repo: SocioQuiz/socio_quiz
