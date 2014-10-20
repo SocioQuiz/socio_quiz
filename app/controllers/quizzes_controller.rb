@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  #skip_before_filter :authenticate_user
+  # skip_before_filter :authenticate_user
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
@@ -37,9 +37,7 @@ class QuizzesController < ApplicationController
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
-
   end
-
 
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
@@ -66,13 +64,14 @@ class QuizzesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quiz
-      @quiz = Quiz.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def quiz_params
-      params.require(:quiz).permit(:question, :answer, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def quiz_params
+    params.require(:quiz).permit(:question, :answer, :user_id)
+  end
 end
