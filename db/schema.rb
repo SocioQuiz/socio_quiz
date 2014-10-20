@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018171455) do
+ActiveRecord::Schema.define(version: 20141020081215) do
 
   create_table "quizzes", force: true do |t|
     t.string   "question"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141018171455) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "profileimage"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
