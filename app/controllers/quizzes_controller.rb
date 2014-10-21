@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  #skip_before_filter :authenticate_user
+  # skip_before_filter :authenticate_user
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
