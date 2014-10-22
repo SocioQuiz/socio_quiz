@@ -29,7 +29,7 @@ th:
     passwords:
       no_token: "ท่านไม่สามารถเข้าถึงเพจนี้ได้เนื่องจากคุณไม่มีโทเคน"
       send_instructions: "ท่านจะได้รับอีเมล์ชี้แจงรายละเอียดวิธีการรีเซ็ตรหัสผ่านภายในไม่ช้านี้"
-      send_paranoid_instructions: ท่านจะได้รับลิงค์ในการรีโคเวอร์รี่รหัสผ่านภายในไม่ช้านี้ ในกรณีที่อัเมล์ของท่านมีอยู่ในฐานข้อมูลของเรา your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      send_paranoid_instructions: "ท่านจะได้รับลิงค์ในการรีโคเวอร์รี่รหัสผ่านภายในไม่ช้านี้ ในกรณีที่อัเมล์ของท่านมีอยู่ในฐานข้อมูลของเรา your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "รหัสผ่านของท่านได้ถูกเปลี่ยนโดยสมบูรณ์แล้ว ในขณะนี้ท่านสามารถเข้าสู่ระบบได้"
       updated_not_active: "เกิดข้อผิดพลาดในการเปลี่ยนรหัสของท่าน"
     registrations:
