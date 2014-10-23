@@ -7,7 +7,6 @@ deploy:
     secure: Af0KHuohdgB7wrkmCHP2wFz0qbRUSrUWT14rMsoljfum5CNDGWlDOrf2s6zZWlrScZ32dJY0W6Z8jQTHau3qNq9Ia44AoUT68zkyZjymqLoVztpsRXiMTfpoxM0iQZMiH4OA8i9pzyxgIcLe2/9ER1PXxZN3GnZw+Ika5KliHDk=
   app: pacific-dawn-8716
   run:
-    - "bundle install"
     - "rake db:migrate:status"
     - "rake db:migrate"
   on:
