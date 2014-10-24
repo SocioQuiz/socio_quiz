@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get 'api/quizzes', defaults: { format: :json }
-  get 'api/answer', defaults: { format: :json }
-  get 'api/answer/:id' => 'api#answer', defaults: { format: :json }
+  use_doorkeeper
+  namespace :api do
+    namespace :v1 do
+      get 'quizzes' => 'quizzes#index', defaults: { format: :json }
+      get 'answer' => 'quizzes#answer', defaults: { format: :json }
+      get 'answer/:id' => 'quizzes#answer', defaults: { format: :json }
+    end
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :quizzes

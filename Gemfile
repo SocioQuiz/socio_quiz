@@ -43,6 +43,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'doorkeeper'
 
 # Multi-Language
 gem 'multi_formal_i18n_tenancy'
