@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  use_doorkeeper
+  namespace :api do
+    namespace :v1 do
+      resources :quizzes, defaults: { format: :json }
+    end
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :quizzes
 
