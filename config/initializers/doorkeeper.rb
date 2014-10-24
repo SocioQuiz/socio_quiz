@@ -10,4 +10,6 @@ Doorkeeper.configure do
     request.env['device.allow_params_authentication'] = true
     request.env['warden'].authenticate!(:scope => :user)
   end
+
+  enable_application_owner :confirmation => false
 end
