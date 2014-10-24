@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   use_doorkeeper
   namespace :api do
     namespace :v1 do
-      get 'quizzes' => 'quizzes#index', defaults: { format: :json }
-      get 'answer' => 'quizzes#answer', defaults: { format: :json }
-      get 'answer/:id' => 'quizzes#answer', defaults: { format: :json }
+      resources :quizzes, defaults: { format: :json }
     end
   end
 
