@@ -69,10 +69,15 @@ GEM
     libv8 (3.16.14.7)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+<<<<<<< HEAD
     mime-types (2.3)
     minitest (5.4.1)
     multi_formal_i18n_tenancy (0.0.5)
       activesupport
+=======
+    mime-types (2.4.2)
+    minitest (5.4.2)
+>>>>>>> 3161df857a78c5e570c88ff68b0afa58d85bcf0d
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)

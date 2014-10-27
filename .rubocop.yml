@@ -36,3 +36,6 @@ Style/ClassAndModuleChildren:
 # Offense count: 11
 Style/Documentation:
   Enabled: false
+AllCops:
+  Exclude:
+    - !ruby/regexp /\/db\/schema\.rb$/
