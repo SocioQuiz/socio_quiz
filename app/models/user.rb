@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,  
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   #before_save :ensure_authentication_token
   #attr_accessible :email, :password, :uid, :provider
-  
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -48,4 +48,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :quizzes
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 end
