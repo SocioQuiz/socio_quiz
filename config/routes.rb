@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  use_doorkeeper
+  use_doorkeeper do
+    controllers :applications => 'oauth/applications'
+  end
+
   namespace :api do
     namespace :v1 do
       resources :quizzes, defaults: { format: :json }
