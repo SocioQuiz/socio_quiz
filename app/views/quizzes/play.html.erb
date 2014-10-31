@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @quiz.question %>
+</p>
+
+<%= form_for @play, url: '/quizzes/respond' do |f| %>
+    <%= f.hidden_field :quiz_id %>
+    <%= f.text_field :reply %>
+    <%= f.submit "submit" %>
+<% end %>
