@@ -101,5 +101,4 @@ ActiveRecord::Schema.define(version: 20141030160334) do
   end
 
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
-
 end
