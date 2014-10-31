@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20141031065224_change_uid_to_users.rb
