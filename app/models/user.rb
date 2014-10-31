@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
                           password: Devise.friendly_token[0, 20]
                         )
     end
-    return user
+    user
   end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)

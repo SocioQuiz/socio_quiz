@@ -37,9 +37,9 @@ class QuizzesController < ApplicationController
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
+<<<<<<< HEAD
   def play
     @play = Play.new quiz_id: params[:id]
   end
@@ -61,6 +61,8 @@ class QuizzesController < ApplicationController
     end
   end
 
+=======
+>>>>>>> FETCH_HEAD
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
   def update
