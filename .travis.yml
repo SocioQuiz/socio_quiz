@@ -9,5 +9,6 @@ deploy:
   run:
     - "rake db:migrate:status"
     - "rake db:migrate"
+    - "rake db:migrate:status"
   on:
     repo: SocioQuiz/socio_quiz

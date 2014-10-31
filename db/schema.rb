@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20141030160334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "profileimage"
   end
 
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
