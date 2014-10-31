@@ -271,4 +271,12 @@ Devise.setup do |config|
   else
     config.omniauth :twitter, ENV['TWITTER_APP_KEY'], ENV['TWITTER_APP_SECRET']
   end
+
+  # Google+ API
+  require 'omniauth-google-oauth2'
+  if Rails.env.production?
+    config.omniauth :google_oauth2, ENV['GOOGLE_APP_KEY'], ENV['GOOGLE_APP_SECRET'], { access_type: "online", prompt: "select_account", grant_type: "authorization_code" }
+  else
+    config.omniauth :google_oauth2, ENV['GOOGLE_APP_KEY'], ENV['GOOGLE_APP_SECRET'], { access_type: "offline", prompt: "select_account" }
+  end
 end
