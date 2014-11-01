@@ -5,7 +5,7 @@
   <%= @quiz.question %>
 </p>
 
-<%= form_for @play, url: '/quizzes/respond' do |f| %>
+<%= form_for @play, url: { action: 'respond' } do |f| %>
     <%= f.hidden_field :quiz_id %>
     <%= f.text_field :reply %>
     <%= f.submit "submit" %>
