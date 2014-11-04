@@ -6,8 +6,6 @@ before_script:
 language: ruby
 rvm:
   - 2.1.4
-gemfile:
-  - Gemfile
 deploy:
   provider: heroku
   api_key:
