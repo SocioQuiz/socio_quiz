@@ -16,13 +16,15 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    encrypted_token = Devise.friendly_token[0, 20]
     unless user
-      user = User.create( name:         auth.extra.raw_info.name,
-                          provider:     auth.provider,
-                          uid:          auth.uid,
-                          email:        auth.info.email,
-                          password:     Devise.friendly_token[0, 20],
-                          profileimage: auth.info.image
+      user = User.create( name:            auth.extra.raw_info.name,
+                          provider:        auth.provider,
+                          uid:             auth.uid,
+                          email:           auth.info.email,
+                          password:        encrypted_token,
+                          fb_access_token: encrypted_token,
+                          profileimage:    auth.info.image
                         )
     end
     return user
@@ -30,13 +32,15 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    encrypted_token = Devise.friendly_token[0, 20]
     unless user
-      user = User.create( name:         auth.info.nickname,
-                          provider:     auth.provider,
-                          uid:          auth.uid,
-			  email:        User.create_quiz_psuedo_email(auth.info.nickname), 
-                          password:     Devise.friendly_token[0, 20], 
-                          profileimage: auth.info.image
+      user = User.create( name:            auth.info.nickname,
+                          provider:        auth.provider,
+                          uid:             auth.uid,
+			  email:           User.create_quiz_psuedo_email(auth.info.nickname), 
+                          password:        encrypted_token, 
+                          tw_access_token: encrypted_token,
+                          profileimage:    auth.info.image
                           )
     end
     return user
@@ -57,12 +61,14 @@ class User < ActiveRecord::Base
         if registered_user
           return registered_user
         else
-          user = User.create( name: data["name"],
-                              provider:auth.provider,
-                              email: data["email"],
-                              uid: auth.uid,
-                              password: Devise.friendly_token[0,20],
-                              profileimage: auth.info.image
+          encrypted_token = Devise.friendly_token[0, 20]
+          user = User.create( name:            data["name"],
+                              provider:        auth.provider,
+                              email:           data["email"],
+                              uid:             auth.uid,
+                              password:        encrypted_token,
+                              gg_access_token: encrypted_token,
+                              profileimage:    auth.info.image
                             )
           return user
         end

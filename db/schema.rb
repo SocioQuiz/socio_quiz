@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031065224) do
+ActiveRecord::Schema.define(version: 20141031210159) do
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
@@ -102,6 +102,9 @@ ActiveRecord::Schema.define(version: 20141031065224) do
     t.datetime "updated_at"
     t.string   "profileimage"
     t.string   "name"
+    t.string   "fb_access_token"
+    t.string   "tw_access_token"
+    t.string   "gg_access_token"
   end
 
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
