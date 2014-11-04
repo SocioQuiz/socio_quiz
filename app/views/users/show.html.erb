@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= current_user.email %>'s Profile</h1>
+<h2>Activity Log</h2>
+<table class="table">
+<thead>
+<tr>
+  <th>ID</th>
+  <th>Question</th>
+  <th>Answer</th>
+  <th>Your Answer</th>
+  <th>Score</th>
+</tr>
+</thead>
+<tbody>
+<% @plays.each do |play| %>
+<tr>
+  <td><%= play.quiz_id %></td>
+  <td><%= play.quiz.question %></td>
+  <td><%= play.quiz.answer %></td>
+  <td><%= play.reply %></td>
+  <td><%= play.score %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
