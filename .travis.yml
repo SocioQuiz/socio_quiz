@@ -1,7 +1,6 @@
 before_install:
   - gem update --system 2.2.2
   - gem --version
-  - bundle install
 language: ruby
 rvm:
   - 2.1.4
