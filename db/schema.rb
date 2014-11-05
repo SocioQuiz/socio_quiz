@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031210159) do
+ActiveRecord::Schema.define(version: 20141105155743) do
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
@@ -82,6 +89,7 @@ ActiveRecord::Schema.define(version: 20141031210159) do
     t.string   "selection_8"
     t.string   "selection_9"
     t.integer  "point"
+    t.integer  "category_id"
   end
 
   create_table "users", force: true do |t|
