@@ -1,6 +1,9 @@
+before_install:
+  - gem update --system 2.2.2
+  - gem --version
 language: ruby
 rvm:
-- 2.1.4
+  - 2.1.4
 deploy:
   provider: heroku
   api_key:
