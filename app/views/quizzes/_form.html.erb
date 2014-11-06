@@ -19,6 +19,10 @@
     <%= f.label :answer %><br>
     <%= f.text_field :answer %>
   </div>
+  <div>
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>
+  </div>
   <div class="field">
     <%= f.label :type %><br>
     <%= f.text_field :type %>
