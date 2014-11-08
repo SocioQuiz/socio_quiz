@@ -6,14 +6,13 @@ before_install:
   - gem --version
 before_deploy:
   - ls -la vendor/bundle
+  - 2.1.2
 deploy:
   provider: heroku
   api_key:
-    secure: Af0KHuohdgB7wrkmCHP2wFz0qbRUSrUWT14rMsoljfum5CNDGWlDOrf2s6zZWlrScZ32dJY0W6Z8jQTHau3qNq9Ia44AoUT68zkyZjymqLoVztpsRXiMTfpoxM0iQZMiH4OA8i9pzyxgIcLe2/9ER1PXxZN3GnZw+Ika5KliHDk=
-  app: pacific-dawn-8716
+    secure: Qh1bRuZGjAgvXNnQIli5ZN8D9AUgQUXz6gD8MlyN3aX7B2XJjHbQa446FZpgE33+r4dRkGqbzkMNgu4NTXoEoEl1+XYPCCBZ8arW79JVDa6RnvWpre9AvPj4VehCLVJPrqXIhXCQDGxfGHO2+6PQhrVDbhHh069h1QhqWxkjDns=
+  app: hidden-garden-3599
   run:
-    - "rake db:migrate:status"
     - "rake db:migrate"
-    - "rake db:migrate:status"
   on:
     repo: SocioQuiz/socio_quiz

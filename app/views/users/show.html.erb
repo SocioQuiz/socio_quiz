@@ -14,13 +14,15 @@
 </thead>
 <tbody>
 <% @plays.each do |play| %>
-<tr>
-  <td><%= play.quiz_id %></td>
-  <td><%= play.quiz.question %></td>
-  <td><%= play.quiz.answer %></td>
-  <td><%= play.reply %></td>
-  <td><%= play.score %></td>
-</tr>
+  <% if play.quiz %>
+    <tr>
+      <td><%= play.quiz_id %></td>
+      <td><%= play.quiz.question %></td>
+      <td><%= play.quiz.answer %></td>
+      <td><%= play.reply %></td>
+      <td><%= play.score %></td>
+    </tr>
+  <% end %>
 <% end %>
 </tbody>
 </table>

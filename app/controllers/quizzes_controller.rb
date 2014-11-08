@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   # skip_before_filter :authenticate_user
   before_action :set_quiz, only: [:show, :edit, :update, :destroy, :play]
+  before_action :set_category
   before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /quizzes
@@ -17,7 +18,6 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
   def new
     @quiz = Quiz.new
-    @category = Category.all
   end
 
   # GET /quizzes/1/edit
@@ -90,6 +90,10 @@ class QuizzesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
       @quiz = Quiz.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
