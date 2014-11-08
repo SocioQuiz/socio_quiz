@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= current_user.email %>'s Profile</h1>
+<h1>
+<% if current_user.name? %>
+  <%= current_user.name %>
+<% else %>
+  <%= current_user.email %>
+<% end %>
+'s Profile
+</h1>
 <h2>Activity Log</h2>
 <table class="table">
 <thead>
