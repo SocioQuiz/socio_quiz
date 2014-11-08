@@ -1,18 +1,16 @@
 language: ruby
 rvm:
-  - 2.1.4
-before_install:
-  - gem update --system 2.2.2
-  - gem --version
+  - 2.1.2
 before_deploy:
   - ls -la vendor/bundle
-  - 2.1.2
 deploy:
   provider: heroku
   api_key:
     secure: Qh1bRuZGjAgvXNnQIli5ZN8D9AUgQUXz6gD8MlyN3aX7B2XJjHbQa446FZpgE33+r4dRkGqbzkMNgu4NTXoEoEl1+XYPCCBZ8arW79JVDa6RnvWpre9AvPj4VehCLVJPrqXIhXCQDGxfGHO2+6PQhrVDbhHh069h1QhqWxkjDns=
   app: hidden-garden-3599
   run:
+    - "rake db:migrate:info"
     - "rake db:migrate"
+    - "rake db:migrate:info"
   on:
     repo: SocioQuiz/socio_quiz
