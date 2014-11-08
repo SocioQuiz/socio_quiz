@@ -15,7 +15,13 @@
 <p class="navbar-text pull-right">
 <%= link_to 'SocioQuiz', root_path %> |
 <% if user_signed_in? %>
-  <strong><%= current_user.email %></strong> |
+  <strong>
+  <% if current_user.name? %>
+    <%= current_user.name %>
+  <% else %>
+    <%= current_user.email %>
+  <% end %>
+  </strong> |
   <%= link_to "Profile", current_user %> |
   <% if current_user.profileimage? %>
      <img src=<%= current_user.profileimage %>>
