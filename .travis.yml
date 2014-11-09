@@ -1,6 +1,8 @@
 language: ruby
 rvm:
-- 2.1.2
+  - 2.1.2
+before_deploy:
+  - rvm list
 deploy:
   provider: heroku
   api_key:
@@ -9,7 +11,8 @@ deploy:
     master: hidden-garden-3599
     production: pacific-dawn-8716
   run:
-    - "rake db:migrate"
+    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment bundle install"
+    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
     - restart
   on:
     repo: SocioQuiz/socio_quiz
