@@ -6,7 +6,6 @@ before_deploy:
   - rvm list
   - which rake
   - which ruby
-  - which rails
   - which bundle
 #  - ls $(PWD)/vendor
 #  - ls $(PWD)/vendor/bundle
