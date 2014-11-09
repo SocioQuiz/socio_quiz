@@ -49,9 +49,6 @@ gem 'omniauth-google-oauth2'
 
 #Asset
 gem 'rails-assets-bootstrap-material-design'
-#gem 'rails-assets-bootstrap'
-#gem 'rails-assets-angular'
-#gem 'rails-assets-leaflet'
 
 #Font-awesome
 gem 'font-awesome-sass'
