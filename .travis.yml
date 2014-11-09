@@ -2,11 +2,13 @@ language: ruby
 rvm:
   - 2.1.2
 before_deploy:
-  - export PATH=$(PWD)/vendor/bundle:$(PWD)/vendor/bundle/bin:$PATH
+#  - export PATH=$(PWD)/vendor/bundle:$(PWD)/vendor/bundle/bin:$PATH
   - which rake
   - which ruby
   - which rails
   - which bundle
+  - ls $(PWD)/vendor
+  - ls $(PWD)/vendor/bundle
 deploy:
   provider: heroku
   api_key:
