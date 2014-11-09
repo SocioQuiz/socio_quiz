@@ -12,6 +12,16 @@
   <%= csrf_meta_tags %>
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--
+  <link href="http://socioquiz.github.io/HTML5LayoutDesign/material/css/ripples.min.css" rel="stylesheet">
+  <link href="http://socioquiz.github.io/HTML5LayoutDesign/material/css/material-wfont.min.css" rel="stylesheet">
+  <link href="http://socioquiz.github.io/HTML5LayoutDesign/style.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="http://socioquiz.github.io/HTML5LayoutDesign/material/js/ripples.min.js"></script>
+  <script src="http://socioquiz.github.io/HTML5LayoutDesign/material/js/material.min.js"></script>
+-->
 <style>
 .row-avatar {
     float: right;
@@ -43,14 +53,16 @@
             <ul class="nav navbar-nav">
                 <li class="inactive">
                     <%= link_to user_omniauth_authorize_path(:facebook), :class => 'navbar-link' do %>
-                        facebook <i class='fa fa-facebook-square' style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;"></i>
+                        facebook <i class='fa fa-facebook-square' style="font-size: 20px; padding-bottom: 0px; margin-bo\
+ttom: 0px;"></i>
                     <% end %>
                 </li>
             </ul>
             <ul class="nav navbar-nav">
                 <li class="inactive">
                     <%= link_to user_omniauth_authorize_path(:twitter), :class => 'navbar-link' do %>
-                        twitter <i class="fa fa-twitter-square" style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;"></i>
+                        twitter <i class="fa fa-twitter-square" style="font-size: 20px; padding-bottom: 0px; margin-bo\
+ttom: 0px;"></i>
                     <% end %>
                 </li>
             </ul>
