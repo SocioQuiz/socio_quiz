@@ -53,6 +53,8 @@ gem 'rails-assets-bootstrap-material-design'
 #gem 'rails-assets-angular'
 #gem 'rails-assets-leaflet'
 
+#Font-awesome
+gem 'font-awesome-sass'
 
 gem 'doorkeeper'
 
