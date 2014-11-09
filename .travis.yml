@@ -20,4 +20,5 @@ deploy:
     - "bundle exec rake db:migrate"
   on:
     repo: SocioQuiz/socio_quiz
-
+after_deploy:
+  - echo "Something wrong at ruby package complied package (with-openssl)."
