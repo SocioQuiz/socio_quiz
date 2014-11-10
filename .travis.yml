@@ -14,6 +14,7 @@ deploy:
     - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment bundle install"
     - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
     - restart
+    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake cleanup"
   on:
     repo: SocioQuiz/socio_quiz
 
