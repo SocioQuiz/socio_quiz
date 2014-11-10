@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
+
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,6 +46,13 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
+#Asset
+gem 'rails-assets-bootstrap-material-design'
+#gem 'rails-assets-bootstrap'
+#gem 'rails-assets-angular'
+#gem 'rails-assets-leaflet'
+
 
 gem 'doorkeeper'
 
