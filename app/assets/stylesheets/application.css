@@ -11,6 +11,18 @@
  * file per style scope.
  *
  *= require_tree .
- *= require font-awesome
  *= require_self
+ *= require bootstrap-material-design
  */
+@font-face {
+    font-family: "Material-Design";
+    src: asset-url("Material-Design.eot?2u7a7w");
+    src: asset-url("Material-Design.eot?#iefix2u7a7w") format("embedded-opentype"),
+         asset-url("Material-Design.woff?2u7a7w") format("woff"),
+         asset-url("Material-Design.ttf?2u7a7w") format("truetype"),
+         asset-url("Material-Design.svg?2u7a7w#Material-Design") format("svg"),
+    	 asset-url("Material-Design-Icons.woff?g7cqhn"),
+    	 asset-url("Material-Design-Icons.ttf?g7cqhn");
+    font-weight: normal;
+    font-style: normal;
+}
