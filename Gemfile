@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 ruby '2.1.2'
 
@@ -46,8 +47,13 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem 'doorkeeper'
+#Asset
+gem 'rails-assets-bootstrap-material-design'
+
+#Font-awesome
 gem 'font-awesome-sass'
+
+gem 'doorkeeper'
 
 # Multi-Language
 gem 'multi_formal_i18n_tenancy'
