@@ -5,11 +5,8 @@ deploy:
   provider: heroku
   api_key:
     secure: Qh1bRuZGjAgvXNnQIli5ZN8D9AUgQUXz6gD8MlyN3aX7B2XJjHbQa446FZpgE33+r4dRkGqbzkMNgu4NTXoEoEl1+XYPCCBZ8arW79JVDa6RnvWpre9AvPj4VehCLVJPrqXIhXCQDGxfGHO2+6PQhrVDbhHh069h1QhqWxkjDns=
-  app:
-    master: hidden-garden-3599
-    deploy: pacific-dawn-8716
+  app: hidden-garden-3599
   run:
     - "rake db:migrate"
   on:
     repo: SocioQuiz/socio_quiz
-
