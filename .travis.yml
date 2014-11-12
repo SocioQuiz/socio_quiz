@@ -3,12 +3,13 @@ rvm:
   - 2.1.2
 before_deploy:
 #  - export PATH=$(PWD)/vendor/bundle:$(PWD)/vendor/bundle/bin:$PATH
+  - rvm list
   - which rake
   - which ruby
   - which rails
   - which bundle
-  - ls $(PWD)/vendor
-  - ls $(PWD)/vendor/bundle
+#  - ls $(PWD)/vendor
+#  - ls $(PWD)/vendor/bundle
 deploy:
   provider: heroku
   api_key:
@@ -17,7 +18,7 @@ deploy:
     master: hidden-garden-3599
     deploy: pacific-dawn-8716
   run:
-    - "rake db:migrate"
+    - "bundle exec rake db:migrate"
   on:
     repo: SocioQuiz/socio_quiz
 
