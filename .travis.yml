@@ -17,7 +17,7 @@ deploy:
     master: hidden-garden-3599
     deploy: pacific-dawn-8716
   run:
-    - "bundle exec rake db:migrate"
+    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
   on:
     repo: SocioQuiz/socio_quiz
 after_deploy:
