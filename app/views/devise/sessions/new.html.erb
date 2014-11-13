@@ -19,9 +19,11 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Log in", new_session_path(resource_name) %>
+                 <li>
+                    <%= link_to "Log in", new_user_session_path, {:class => 'navbar-link'} %>
                 </li>
-                <li><%= link_to '<i style="border-left: 3px solid white;">Sign up</i>'.html_safe, new_registration_path(resource_name) %>
+                <li>
+                    <%= link_to "Sign up", new_user_registration_path, {:class => 'navbar-link', :style => 'border-left: 3px solid white;'} %>
                 </li>
             </ul>
         </div>
@@ -38,13 +40,13 @@
             <h3 class="col-md-1" style="text-align: center;">Or</h3>
             <!-- login via email -->
             <div class="well col-md-7">
-                <form class="form-horizontal">
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                        <fieldset>
+            	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                	<form class="form-horizontal">
+                    	<fieldset>
                             <legend>Login with Email</legend>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <%= f.email_field :email, autofocus: true, :class => "form-control", :id => "inputEmail", :placeholder => "Email"  %>
+                                    <%= f.email_field :email, autofocus: true, :class => "form-control", :id => "inputEmail", :placeholder => "Email"  %><br/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,8 +69,8 @@
                             <%= f.submit :href => "javascript:void(0)", :class => "btn btn-primary btn-fab btn-raised mdi-action-exit-to-app", :style => "position: absolute; bottom: 15px; right: 15px;", :value => "✓" %>
                             
                         </fieldset>
-                    <% end %>
-                </form>
+                    </form>
+                <% end %>
             </div>
         </div>
     </div>

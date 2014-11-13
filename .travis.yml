@@ -14,8 +14,14 @@ deploy:
     production: pacific-dawn-8716
 =======
     secure: Qh1bRuZGjAgvXNnQIli5ZN8D9AUgQUXz6gD8MlyN3aX7B2XJjHbQa446FZpgE33+r4dRkGqbzkMNgu4NTXoEoEl1+XYPCCBZ8arW79JVDa6RnvWpre9AvPj4VehCLVJPrqXIhXCQDGxfGHO2+6PQhrVDbhHh069h1QhqWxkjDns=
+<<<<<<< HEAD
   app: hidden-garden-3599
 >>>>>>> merge signin and signup page
+=======
+  app:
+    master: hidden-garden-3599
+    deploy: pacific-dawn-8716
+>>>>>>> merge create quizes page
   run:
     - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment bundle install"
     - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
@@ -24,6 +30,10 @@ deploy:
   on:
     repo: SocioQuiz/socio_quiz
 <<<<<<< HEAD
+<<<<<<< HEAD
 #    rvm: 2.1.2
 =======
 >>>>>>> merge signin and signup page
+=======
+
+>>>>>>> merge create quizes page

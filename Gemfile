@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
+
 #ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
-
 # Use postgresql as the database for Active Record
 gem 'pg', group: :production
 gem 'sqlite3', group: [:development, :test]
@@ -54,6 +54,7 @@ gem 'doorkeeper'
 >>>>>>> merge signin and signup page
 
 gem 'doorkeeper'
+gem 'font-awesome-sass'
 
 # Multi-Language
 gem 'multi_formal_i18n_tenancy'
@@ -62,12 +63,8 @@ gem 'http_accept_language'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
-
 #resolving TZInfo::DataSourceNotFound Errors. Read more: https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
-#setting up haml. Read more: http://railsapps.github.io/rails-haml.html
-#gem 'haml-rails', '>= 0.3.4'
 
 #using bootstrap materials design. Read more: https://github.com/FezVrasta/bootstrap-material-design
 gem 'bootstrap-material-design'
