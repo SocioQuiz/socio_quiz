@@ -17,4 +17,4 @@ deploy:
     - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake cleanup"
   on:
     repo: SocioQuiz/socio_quiz
-
+    rvm: 2.1.2
