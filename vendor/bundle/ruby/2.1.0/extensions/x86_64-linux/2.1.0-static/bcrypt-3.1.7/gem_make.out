@@ -13,5 +13,5 @@ compiling crypt_gensalt.c
 linking shared-object bcrypt_ext.so
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20141114-1258-1kw8q6y
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20141114-1954-1q9al9l
 installing default bcrypt_ext libraries

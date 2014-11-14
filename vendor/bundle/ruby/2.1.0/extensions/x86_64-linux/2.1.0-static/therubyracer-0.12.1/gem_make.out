@@ -36,5 +36,5 @@ compiling context.cc
 linking shared-object v8/init.so
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 init.so ./.gem.20141114-1258-1egbl4/v8
+/usr/bin/install -c -m 0755 init.so ./.gem.20141114-1954-2pju81/v8
 installing default init libraries
