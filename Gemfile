@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
+#source 'https://rails-assets.org'
 
 ruby '2.1.2'
 
@@ -46,9 +46,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-
-#Asset
-gem 'rails-assets-bootstrap-material-design'
 
 #Font-awesome
 gem 'font-awesome-sass'

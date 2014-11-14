@@ -1,0 +1,17 @@
+/usr/local/bin/ruby extconf.rb 
+checking for ruby/util.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling bcrypt_ext.c
+compiling wrapper.c
+compiling crypt_gensalt.c
+linking shared-object bcrypt_ext.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20141114-1258-1kw8q6y
+installing default bcrypt_ext libraries
