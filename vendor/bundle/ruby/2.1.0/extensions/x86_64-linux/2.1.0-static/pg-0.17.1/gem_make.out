@@ -51,5 +51,5 @@ compiling pg.c
 linking shared-object pg_ext.so
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20141114-1954-en0p0s
+/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20141114-2707-1ch815q
 installing default pg_ext libraries

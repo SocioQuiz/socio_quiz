@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-#source 'https://rails-assets.org'
 
 ruby '2.1.2'
 
@@ -56,6 +55,6 @@ gem 'doorkeeper'
 gem 'multi_formal_i18n_tenancy'
 gem 'http_accept_language'
 
-#group :development, :test do
-#  gem 'rspec-rails', '~> 3.0.0'
-#end
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end

@@ -25,5 +25,5 @@ compiling sqlite3.c
 linking shared-object sqlite3/sqlite3_native.so
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20141114-1954-1c3hfa7/sqlite3
+/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20141114-2707-tkqybc/sqlite3
 installing default sqlite3_native libraries
