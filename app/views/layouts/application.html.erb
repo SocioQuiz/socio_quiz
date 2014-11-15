@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SocioQuiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<style>
+.row-avatar {
+    float: right;
+    margin-top: 0px;
+    padding-left: 5px;
+    border-radius: 100%;
+}
+</style>
+</head>
+<body>
+  <!-- HEADER UI -->
+  <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px;">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to 'Logo SocioQuiz', root_path, {:class => "navbar-brand"} %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <%= link_to 'Home', root_path %>
+            </li>
+        <% if user_signed_in? %>
+        <% else %>
+            <li class="inactive">
+                <%= link_to user_omniauth_authorize_path(:facebook), :class => 'navbar-link' do %>
+                    facebook <i class='fa fa-facebook-square' style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;"></i>
+                <% end %>
+            </li>
+            <li class="inactive">
+                <%= link_to user_omniauth_authorize_path(:twitter), :class => 'navbar-link' do %>
+                    twitter <i class="fa fa-twitter-square" style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;"></i>
+                <% end %>
+            </li>
+            <li class="inactive">
+                <%= link_to user_omniauth_authorize_path(:google_oauth2), :class => 'navbar-link' do %>
+                    google+ <i class="fa fa-google-plus-square" style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;"></i>
+                <% end %>
+            </li>
+        <% end %>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li>
+                <strong>
+                    <% if current_user.name? %>
+                        <div class="navbar" style="padding-top: 15px; padding-bottom: 0px; margin-bottom: 0px"><%= current_user.name %></div>
+                    <% else %>
+                        <div class="navbar" style="padding-top: 15px; padding-bottom: 0px; margin-bottom: 0px"><%= current_user.email %></div>
+                    <% end %>
+                </strong>
+            </li>
+            <% if current_user.profileimage? %>
+            <li>
+                <img style="padding: 0px; magin: 0px;" class="row-avatar" src=<%= current_user.profileimage %>>
+            </li>
+            <% end %>
+
+
+            <li>
+                 <%= link_to "Quizz Activities", current_user, {:class => 'navbar-link'} %>
+            </li>
+            <li>
+                 <%= link_to "Edit Profile", edit_user_registration_path, {:class => 'navbar-link'} %>
+            </li>
+            <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Log in", new_user_session_path, {:class => 'navbar-link'} %>
+            </li>
+            <li>
+                <%= link_to "Sign up", new_user_registration_path, {:class => 'navbar-link'} %>
+            </li>
+        <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+<%= yield %>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
