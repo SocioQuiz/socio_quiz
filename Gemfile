@@ -46,13 +46,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-<<<<<<< HEAD
-#Font-awesome
-gem 'font-awesome-sass'
-=======
-gem 'doorkeeper'
->>>>>>> merge signin and signup page
-
 gem 'doorkeeper'
 gem 'font-awesome-sass'
 
