@@ -5,6 +5,7 @@ before_deploy:
   - rvm list
 deploy:
   provider: heroku
+  strategy: api
   api_key:
     secure: fkXeCZI+G9XpLOk2HipySjNssS9d74Jc7PXno2dDtZ2SVDjlsZMd7FY+mGoAeyK02eCvzE5ldg0b2IuJPEl3MJF301kAx4g9QSubUYe5dzEY7G9jDM9cIqWzd8qgQvxBBUcZ66vwB6KSoPQEJdwEOd1Hujf7foMUFDO3ICOC7es=
   app:
