@@ -46,10 +46,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-#Font-awesome
-gem 'font-awesome-sass'
-
 gem 'doorkeeper'
+gem 'font-awesome-sass'
 
 # Multi-Language
 gem 'multi_formal_i18n_tenancy'
@@ -58,3 +56,8 @@ gem 'http_accept_language'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
+#resolving TZInfo::DataSourceNotFound Errors. Read more: https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+#using bootstrap materials design. Read more: https://github.com/FezVrasta/bootstrap-material-design
+gem 'bootstrap-material-design'
