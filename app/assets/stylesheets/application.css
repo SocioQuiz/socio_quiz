@@ -21,8 +21,52 @@
          asset-url("Material-Design.woff?2u7a7w") format("woff"),
          asset-url("Material-Design.ttf?2u7a7w") format("truetype"),
          asset-url("Material-Design.svg?2u7a7w#Material-Design") format("svg"),
-    	 asset-url("Material-Design-Icons.woff?g7cqhn"),
-    	 asset-url("Material-Design-Icons.ttf?g7cqhn");
+         asset-url("Material-Design-Icons.woff?g7cqhn"),
+         asset-url("Material-Design-Icons.ttf?g7cqhn");
     font-weight: normal;
     font-style: normal;
 }
+
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#login-area {
+    /*width: 800px;*/
+}
+#login-area>div {
+    min-height: 260px;
+}
+.full-width {
+    width: 100%;
+}
+.row-avatar {
+    float: right;
+    margin-top: -20px;
+    padding-left: 5px;
+    border-radius: 100%;
+}
+.navbar {
+    margin-bottom: 0px;
+    text-align: center;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    top: 0px;
+}
+.container {
+    margin-top: 60px;
+}
+div.divider {
+    height: 1px;
+    margin: 9px 0px;
+    background-color: #E5E5E5;
+}
+.none-margin-top {
+        margin-top: 0;
+}
+
