@@ -1,3 +1,8 @@
+
+
+<!-- 
+  ##  We should care about devise form_for and such tag generating function.
+
 <%= form_for(@quiz) do |f| %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">
@@ -74,3 +79,215 @@
     <%= f.submit %>
   </div>
 <% end %>
+-->
+
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <%= form_for(@quiz) do |f| %>
+                    <% if @quiz.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+                          <ul>
+                          <% @quiz.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+                    <!--<form class="form-horizontal">-->
+                    <div class="form-horizontal">
+                        <div class="col-md-3">
+                            <div class="side-option">
+                                <div class="toolbar">
+                                    <legend>Option</legend>
+                                </div>
+                                <div class="content">
+                                    <div class="type-quiz">
+                                        <div class="form-group">
+                                            <label class="control-label">Type Quiz</label>
+                                            <div class="">
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="type-quiz" id="Multiple-choice" value="option1" checked="" type="radio">Multiple choice
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="type-quiz" id="Checkboxes" value="option2" type="radio">Checkboxes
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="type-quiz" id="True-False" value="option2" type="radio">True / False
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="type-quiz" id="Fill-in-the-blank" value="option2" type="radio">Fill in the blank
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="type-quiz" id="Matching" value="option2" type="radio">Matching
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="category">
+                                        <div class="form-group">
+                                            <label class="control-label">Category</label>
+                                            <div class="">
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Entertainment" value="option1" checked="" type="radio">Entertainment
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Sport" value="option2" type="radio">Sport
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="TV-Movies" value="option2" type="radio">TV & Movies
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Music" value="option2" type="radio">Music
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Food-Drink" value="option2" type="radio">Food & Drink
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Geography" value="option2" type="radio">Geography
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="General-Knowledge" value="option2" type="radio">General Knowledge
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="History" value="option2" type="radio">History
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-primary">
+                                                    <label>
+                                                        <input name="category" id="Science-Nature" value="option2" type="radio">Science and Nature
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9" style="border-left: 2px solid red;">
+                            <div class="question">
+                                <legend>Question</legend>
+                                <div>
+                                    <%= f.text_field :question, :class => "form-control", :rows => "3", :placeholder => "Please enter question here ..." %>
+                                </div>
+                                <div class="row" style="margin: 20px 0;">
+                                    <div class="checkbox col-md-3 none-margin-top">
+                                        <label>
+                                            <input type="checkbox">Picture or Video:
+                                        </label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input readonly="" class="form-control floating-label" placeholder="Browse..." type="text">
+                                        <input id="inputFile" multiple="" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="answer" style="padding: 15px;">
+                                <legend>Selection</legend>
+                                <div class="answer_true_false" style="display: none">
+                                    <div class="radio radio-primary">
+                                        <label>
+                                            <input name="answer" id="true" value="option1"  checked="" type="radio">True
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary">
+                                        <label>
+                                            <input name="answer" id="false" value="option2" type="radio">False
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="answer_checkboxes">
+                                    <div class="row">
+                                        <div class="checkbox col-md-3 none-margin-top">
+                                            <label>
+                                              <input type="checkbox">Selection 1:
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="checkbox col-md-3 none-margin-top">
+                                            <label>
+                                              <input type="checkbox">Selection 2:
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="checkbox col-md-3 none-margin-top">
+                                            <label>
+                                              <input type="checkbox">Selection 3:
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="checkbox col-md-3 none-margin-top">
+                                            <label>
+                                              <input type="checkbox">Selection 4:
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" type="button"><i class="mdi-content-add"></i>Add new selection</button>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="ans row" style="padding: 15px;">
+                                <div class="checkbox col-md-2 none-margin-top">
+                                    <label>
+                                        <input type="checkbox">Answer:
+                                    </label>
+                                </div>
+                                <div class="col-md-10">
+                                     <%= f.text_field :answer, :class => "form-control", :rows => "3", :id => "textArea" %>
+                                </div>
+                            </div>
+                            <%= f.submit :class => "btn btn-primary", :style => "float: right" %>
+                        <!-- </form> -->
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
