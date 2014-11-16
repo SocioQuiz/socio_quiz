@@ -12,9 +12,13 @@ deploy:
     master: hidden-garden-3599
     production: pacific-dawn-8716
   run:
-    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment bundle install"
-    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
+#    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment bundle install"
+#    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake db:migrate"
+    - rake db:migrate:status
+    - rake db:migrate
+    - rake db:migrate:status
+    - rake assets:precompile
     - restart
-    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake cleanup"
+#    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake cleanup"
   on:
     repo: SocioQuiz/socio_quiz
