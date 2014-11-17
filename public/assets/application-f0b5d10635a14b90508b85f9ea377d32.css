@@ -1,4 +1,47 @@
-/* line 1, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#login-area {
+    /*width: 800px;*/
+}
+#login-area>div {
+    min-height: 260px;
+}
+.full-width {
+    width: 100%;
+}
+.row-avatar {
+    float: right;
+    margin-top: -20px;
+    padding-left: 5px;
+    border-radius: 100%;
+}
+.navbar {
+    margin-bottom: 0px;
+    text-align: center;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    top: 0px;
+}
+.container {
+    margin-top: 60px;
+}
+div.divider {
+    height: 1px;
+    margin: 9px 0px;
+    background-color: #E5E5E5;
+}
+.none-margin-top {
+        margin-top: 0;
+}
+
+/* line 1, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #fff;
   color: #333;
@@ -7,52 +50,52 @@ body {
   line-height: 18px;
 }
 
-/* line 9, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 9, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-/* line 15, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 15, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
-/* line 21, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 21, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 a {
   color: #000;
 }
-/* line 23, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 23, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 a:visited {
   color: #666;
 }
-/* line 26, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 26, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 a:hover {
   color: #fff;
   background-color: #000;
 }
 
-/* line 33, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 33, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 38, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 38, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 #notice {
   color: green;
 }
 
-/* line 42, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 42, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 48, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 48, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -61,7 +104,7 @@ div.field, div.actions {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 55, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 55, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -72,12 +115,20 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 65, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/scaffolds.css.scss */
+/* line 65, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
 }
-/* line 2, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+@font-face {
+  font-family: "Material-Design";
+  src: url(/Material-Design.eot?2u7a7w);
+  src: url(/Material-Design.eot?#iefix2u7a7w) format("embedded-opentype"), url(/Material-Design.woff?2u7a7w) format("woff"), url(/Material-Design.ttf?2u7a7w) format("truetype"), url(/Material-Design.svg?2u7a7w#Material-Design) format("svg"), url(/assets/Material-Design-Icons.woff?g7cqhn), url(/assets/Material-Design-Icons.ttf?g7cqhn);
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 14, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .centered {
   position: fixed;
   top: 50%;
@@ -85,22 +136,22 @@ div.field, div.actions {
   transform: translate(-50%, -50%);
 }
 
-/* line 8, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 20, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 #login-area {
   /*width: 800px;*/
 }
 
-/* line 11, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 23, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 #login-area > div {
   min-height: 260px;
 }
 
-/* line 14, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 26, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .full-width {
   width: 100%;
 }
 
-/* line 17, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 29, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .row-avatar {
   float: right;
   margin-top: -20px;
@@ -108,7 +159,7 @@ div.field, div.actions {
   border-radius: 100%;
 }
 
-/* line 23, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 35, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .navbar {
   margin-bottom: 0px;
   text-align: center;
@@ -119,19 +170,19 @@ div.field, div.actions {
   top: 0px;
 }
 
-/* line 32, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 44, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .container {
   margin-top: 60px;
 }
 
-/* line 35, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 47, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 div.divider {
   height: 1px;
   margin: 9px 0px;
   background-color: #E5E5E5;
 }
 
-/* line 40, /home/praween/socio_quiz_work/socio_quiz_org/app/assets/stylesheets/users.css.scss */
+/* line 52, /home/praween/socio_quiz_work/socio_quiz_fork/app/assets/stylesheets/users.css.scss */
 .none-margin-top {
   margin-top: 0;
 }
@@ -159,11 +210,55 @@ div.divider {
          asset-url("Material-Design.woff?2u7a7w") format("woff"),
          asset-url("Material-Design.ttf?2u7a7w") format("truetype"),
          asset-url("Material-Design.svg?2u7a7w#Material-Design") format("svg"),
-    	 asset-url("Material-Design-Icons.woff?g7cqhn"),
-    	 asset-url("Material-Design-Icons.ttf?g7cqhn");
+         asset-url("Material-Design-Icons.woff?g7cqhn"),
+         asset-url("Material-Design-Icons.ttf?g7cqhn");
     font-weight: normal;
     font-style: normal;
 }
+
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#login-area {
+    /*width: 800px;*/
+}
+#login-area>div {
+    min-height: 260px;
+}
+.full-width {
+    width: 100%;
+}
+.row-avatar {
+    float: right;
+    margin-top: -20px;
+    padding-left: 5px;
+    border-radius: 100%;
+}
+.navbar {
+    margin-bottom: 0px;
+    text-align: center;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    top: 0px;
+}
+.container {
+    margin-top: 60px;
+}
+div.divider {
+    height: 1px;
+    margin: 9px 0px;
+    background-color: #E5E5E5;
+}
+.none-margin-top {
+        margin-top: 0;
+}
+
 @font-face {
   font-family: "Material-Design-Icons";
   src: url("/assets/Material-Design-Icons.eot?-g7cqhn");
