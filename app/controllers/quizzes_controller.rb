@@ -30,11 +30,18 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     respond_to do |format|
-      if @quiz.save
-        format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
-        format.json { render :show, status: :created, location: @quiz }
+      # Strong parameters are question and answer. User should be input these two params.
+      if params[:quiz][:question].to_s.length != 0 && params[:quiz][:answer].to_s.length != 0
+        if @quiz.save
+          format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
+          format.json { render :show, status: :created, location: @quiz }
+        else
+          format.html { render :new }
+          format.json { render json: @quiz.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
+        format.html { redirect_to @quiz, alert: 'Your orperation was not complete. Check your answer or question again.'}
+        #format.html { render :new, notice: 'test'}
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
@@ -66,13 +73,13 @@ class QuizzesController < ApplicationController
   # PATCH/PUT /quizzes/1.json
   def update
     respond_to do |format|
-      if @quiz.update(quiz_params)
-        format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
-        format.json { render :show, status: :ok, location: @quiz }
-      else
-        format.html { render :edit }
-        format.json { render json: @quiz.errors, status: :unprocessable_entity }
-      end
+        if @quiz.update(quiz_params)
+          format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
+          format.json { render :show, status: :ok, location: @quiz }
+        else
+          format.html { render :edit }
+          format.json { render json: @quiz.errors, status: :unprocessable_entity }
+        end
     end
   end
 
@@ -98,6 +105,7 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
+      
       params.require(:quiz).permit(:question, :answer, :user_id, :category_id, :type, :selection_1, :selection_2, :selection_3, :selection_4, :selection_5, :selection_6, :selection_7, :selection_8, :selection_9, :point)
     end
 end
