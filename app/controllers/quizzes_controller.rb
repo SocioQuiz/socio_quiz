@@ -40,8 +40,7 @@ class QuizzesController < ApplicationController
           format.json { render json: @quiz.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to @quiz, alert: 'Your orperation was not complete. Check your answer or question again.'}
-        #format.html { render :new, notice: 'test'}
+        format.html { redirect_to @quiz, alert: 'Your operation was not completed. Check your answer or question again.'}
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
