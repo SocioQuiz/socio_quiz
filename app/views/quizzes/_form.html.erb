@@ -222,12 +222,12 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="answer_checkboxes">
+                                <div class="answer_checkboxes" id="selection_checkboxes">
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 1:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 1:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
                                           <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
@@ -235,9 +235,9 @@
                                     </div>
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 2:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 2:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
                                           <%= f.text_field :selection_2, :class => "form-control input-lg", :id => "inputLarge"%>
@@ -245,77 +245,50 @@
                                     </div>
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 3:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 3:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
                                           <%= f.text_field :selection_3, :class => "form-control input-lg", :id => "inputLarge"%>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 4:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_4, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 5:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_5, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 6:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_6, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 7:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_7, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 8:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_8, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 9:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_9, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-<!--
-                                    <button class="btn btn-primary" type="button" onclick="javascript:void(0)"><i class="mdi-content-add"></i>Add new selection</button>
--->
+
+                                    <!--<button class="btn btn-primary" type="button" onclick="javascript:addNewSelection();"><i class="mdi-content-add"></i>Add new selection</button>-->
+
+				    <script language="javascript">
+			              var selectionMax = 9;
+				      var selectionNum = 3;
+				      var addNewSelection = function(){
+				          if(selectionNum < selectionMax){
+					       selectionNum++;
+					       var selectionElement = document.getElementById("selection_checkboxes");
+						    
+					       var domNewRow = document.createElement("div");
+					       domNewRow.className = "row";
+						    
+					       var domNewCheckbox = document.createElement("div");
+					       domNewCheckbox.className = "checkbox col-md-3 none-margin-top";
+					       /*var domCheckboxLabel = document.createElement("label");
+					       domCheckboxLabel.innerHTML = "Selection " + selectionNum + ":";
+*/
+					       domNewCheckbox.innerHTML = "Selection " + selectionNum + ":";
+					       //domNewCheckbox.appendChild(domCheckboxLabel);
+						    
+					       var domNewInputTxt = document.createElement("div");
+					       domNewInputTxt.className="form-group col-md-9";
+					       domNewInputTxt.innerHTML = "<input class='form-control input-lg' id='inputLarge' name='quiz[selection_" + selectionNum + "9]' type='text' value='' />";
+						    
+					       domNewRow.appendChild(domNewCheckbox);
+					       domNewRow.appendChild(domNewInputTxt);
+					       selectionElement.appendChild(domNewRow);
+console.log("sss");
+					    }
+					}
+				</script>
+                                </div>
+                                <div>
+				    <button class="btn btn-primary" type="button" onclick="javascript:addNewSelection();"><i class="mdi-content-add"></i>Add new selection</button>
                                 </div>
                             </div>
                             <div class="divider"></div>
