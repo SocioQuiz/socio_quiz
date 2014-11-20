@@ -20,7 +20,6 @@
                 <div class="form-horizontal">
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <%= devise_error_messages! %>
-                    <!--<div class="div-horizontal">-->
                         <fieldset>
                             <legend>Login with Email</legend>
                             <div class="form-group">
@@ -56,7 +55,6 @@
                             <%= f.submit :class => "btn btn-primary btn-fab btn-raised mdi-action-exit-to-app mdi-navigation-arrow-forward", :style => "position: absolute; bottom: 15px; right: 15px;", :value => "✓" %>    
                             
                         </fieldset>
-                        <!--</div>-->
                     <% end %>
                 </div>
             </div>
