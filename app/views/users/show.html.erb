@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 100px;">
 <p id="notice"><%= notice %></p>
-
+<% if user_signed_in? %>
 <h1>
 <% if current_user.name %>
   <%= current_user.name %>
@@ -34,4 +34,7 @@
 <% end %>
 </tbody>
 </table>
+<% else %>
+Please signin
+<% end %>
 </div>
