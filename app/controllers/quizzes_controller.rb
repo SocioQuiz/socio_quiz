@@ -133,7 +133,8 @@ class QuizzesController < ApplicationController
     end
 
     def set_category
-      if user_signed_in?
+      #if user_signed_in?
+      if current_user != nil
          @quiz_plays = Play.where(user_id: current_user.id)
       end
       @category = Category.all
