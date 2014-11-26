@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105155743) do
+ActiveRecord::Schema.define(version: 20141126192904) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20141105155743) do
     t.string   "fb_access_token"
     t.string   "tw_access_token"
     t.string   "gg_access_token"
+    t.string   "permission"
   end
 
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
