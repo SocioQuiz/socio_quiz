@@ -29,7 +29,7 @@
         <td><%= play.quiz.question %></td>
         <td><%= play.quiz.answer %></td>
         <td><%= play.reply %></td>
-        <td><%= play.score %></td>
+        <td><%= play.score.to_i %></td>
         <% total_score += play.score.to_i %>
       </tr>
     <% end %>
