@@ -27,6 +27,12 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
+    # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
+    if params[:quiz][:point].to_s.length != 0
+    else
+       params[:quiz][:point] = "0"
+    end
+
     @quiz = Quiz.new(quiz_params)
 
     respond_to do |format|
@@ -71,6 +77,12 @@ class QuizzesController < ApplicationController
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
   def update
+    # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
+    if params[:quiz][:point].to_s.length != 0
+    else
+       params[:quiz][:point] = "0"
+    end
+
     respond_to do |format|
       # Strong parameters are question and answer. User should be input these two params.
       if params[:quiz][:question].to_s.length != 0 && params[:quiz][:answer].to_s.length != 0
