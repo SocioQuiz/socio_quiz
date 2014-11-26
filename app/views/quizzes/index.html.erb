@@ -133,20 +133,21 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <a style="padding-left: 5px; padding-right: 5px;">
-                                <%= link_to '<i class="mdi-av-play-arrow"></i>'.html_safe, play_quiz_path(quiz) %>
-                            </a>
-                            
-                            <a style="padding-left: 5px; padding-right: 5px;">
-                                <%= link_to '<i class="mdi-editor-mode-edit"></i>'.html_safe, edit_quiz_path(quiz) %>
-                            </a>
+                            <% if user_signed_in? %>
+                                <a style="padding-left: 5px; padding-right: 5px;">
+                                    <%= link_to '<i class="mdi-av-play-arrow"></i>'.html_safe, play_quiz_path(quiz) %>
+                                </a>
+                                
+                                <a style="padding-left: 5px; padding-right: 5px;">
+                                    <%= link_to '<i class="mdi-editor-mode-edit"></i>'.html_safe, edit_quiz_path(quiz) %>
+                                </a>
 
-                            <%= link_to '<i class="mdi-action-delete" ></i>'.html_safe,
-                                quiz,
-                                method: :delete,
-                                data: { confirm: "Are you sure?"
-                            } %>  
+                                <%= link_to '<i class="mdi-action-delete" ></i>'.html_safe,
+                                    quiz,
+                                    method: :delete,
+                                    data: { confirm: "Are you sure?"
+                                } %> 
+                            <% end %> 
                         </td>
                     </tr>
                     <% end %>
