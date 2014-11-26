@@ -1,53 +1,81 @@
-<html>
-
-<head>
-</head>
-
-<body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">Logo SocioQuiz</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><%= link_to "Home", root_path %>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="javascript:void(0)" style="padding: 8px 15px;">
-                        <div style="border-radius: 100%; border: 2px solid rgba(255, 255, 255, 0.84); width: 45px; margin-left: auto; margin-right: auto;">
-                            <i class="mdi-social-notifications" style="font-size: 40px;  position: relative;">
-                                <span class="badge" style="position: absolute; right: 5px;
-                        bottom: -5px; border-radius: 2px !important; background-color: #D9534F;">3</span>
-                            </i>
-                        </div>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                        <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Username
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li style="padding: 3px 20px; font-size: 16px;">Total Point: 9696</li>
-                        <li><%= link_to "Edit Profile", edit_user_registration_path %>
-                        </li>
-                        <li class="divider"></li>
-                        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<!--
+<div>
+<%= form_for(@quiz) do |f| %>
+  <% if @quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+      <ul>
+      <% @quiz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :question %><br>
+    <%= f.text_field :question %>
+  </div>
+  <div class="field">
+    <%= f.label :answer %><br>
+    <%= f.text_field :answer %>
+  </div>
+  <div>
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_1 %><br>
+    <%= f.text_field :selection_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_2 %><br>
+    <%= f.text_field :selection_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_3 %><br>
+    <%= f.text_field :selection_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_4 %><br>
+    <%= f.text_field :selection_4 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_5 %><br>
+    <%= f.text_field :selection_5 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_6 %><br>
+    <%= f.text_field :selection_6 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_7 %><br>
+    <%= f.text_field :selection_7 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_8 %><br>
+    <%= f.text_field :selection_8 %>
+  </div>
+  <div class="field">
+    <%= f.label :selection_9 %><br>
+    <%= f.text_field :selection_9 %>
+  </div>
+  <div class="field">
+    <%= f.label :point %><br>
+    <%= f.text_field :point %>
+  </div>
+  <% if user_signed_in? %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+-->
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -63,7 +91,7 @@
                           </ul>
                         </div>
                     <% end %>
-                    <form class="form-horizontal">
+                    <div class="div-horizontal">
                         <div class="col-md-3">
                             <div class="side-option">
                                 <div class="toolbar">
@@ -76,30 +104,15 @@
                                             <div class="">
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="type-quiz" id="Multiple-choice" value="option1" checked="" type="radio">Multiple choice
+                                                        <%= f.radio_button :type, '1', :checked => true, :id => 'Multiple-choice' %>Multiple Choice
                                                     </label>
                                                 </div>
-                                                <div class="radio radio-primary">
+                                               <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="type-quiz" id="Checkboxes" value="option2" type="radio">Checkboxes
+                                                        <%= f.radio_button :type, '2', :id => 'Fill-in-the-blank' %>Fill in the blank
                                                     </label>
                                                 </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="type-quiz" id="True-False" value="option2" type="radio">True / False
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="type-quiz" id="Fill-in-the-blank" value="option2" type="radio">Fill in the blank
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="type-quiz" id="Matching" value="option2" type="radio">Matching
-                                                    </label>
-                                                </div>
-                                            </div>
+                                           </div>
                                         </div>
                                     </div>
                                     <div class="category">
@@ -108,47 +121,66 @@
                                             <div class="">
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Entertainment" value="option1" checked="" type="radio">Entertainment
+                                                        <!--<%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>-->
+                                                        <%= f.radio_button :category_id, '1', :id => 'Entertainment', :checked => true %>
+                                                        <!--<input name="quiz[category_id]" id="Entertainment" value="1" checked="" type="radio">-->
+                                                        Entertainment
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Sport" value="option2" type="radio">Sport
+                                                        <%= f.radio_button :category_id, '2', :id => 'Sport' %>
+                                                        <!--<input name="quiz[category_id]" id="Sport" value="2" type="radio">-->
+                                                        Sport
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="TV-Movies" value="option2" type="radio">TV & Movies
+                                                        <%= f.radio_button :category_id, '3', :id => 'TV-Movies' %>
+                                                        <!--<input name="quiz[category_id]" id="TV-Movies" value="3" type="radio">-->
+                                                        TV & Movies
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Music" value="option2" type="radio">Music
+                                                        <%= f.radio_button :category_id, '4', :id => 'Music' %>
+                                                        <!--<input name="quiz[category_id]" id="Music" value="4" type="radio">-->
+                                                        Music
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Food-Drink" value="option2" type="radio">Food & Drink
+                                                        <%= f.radio_button :category_id, '5', :id => 'Food-Drink' %>
+                                                        <!--<input name="quiz[category_id]" id="Food-Drink" value="5" type="radio">-->
+                                                        Food & Drink
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Geography" value="option2" type="radio">Geography
+                                                        <%= f.radio_button :category_id, '6', :id => 'Geography' %>
+                                                        <!--<input name="quiz[category_id]" id="Geography" value="6" type="radio">-->
+                                                        Geography
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="General-Knowledge" value="option2" type="radio">General Knowledge
+                                                        <%= f.radio_button :category_id, '7', :id => 'General-Knowledge' %>
+                                                        <!--<input name="quiz[category_id]" id="General-Knowledge" value="7" type="radio">-->
+                                                        General Knowledge
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="History" value="option2" type="radio">History
+                                                        <%= f.radio_button :category_id, '8', :id => 'History' %>
+                                                        <!--<input name="quiz[category_id]" id="History" value="8" type="radio">-->
+                                                        History
                                                     </label>
                                                 </div>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="category" id="Science-Nature" value="option2" type="radio">Science and Nature
+                                                        <%= f.radio_button :category_id, '9', :id => 'Science-Nature' %>
+                                                        <!--<input name="quiz[category_id]" id="Science-Nature" value="9" type="radio">-->
+                                                        Science and Nature
                                                     </label>
                                                 </div>
                                             </div>
@@ -190,12 +222,12 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="answer_checkboxes">
+                                <div class="answer_checkboxes" id="selection_checkboxes">
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 1:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 1:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
                                           <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
@@ -203,35 +235,61 @@
                                     </div>
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 2:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 2:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                          <%= f.text_field :selection_2, :class => "form-control input-lg", :id => "inputLarge"%>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 3:
-                                            </label>
+                                            <!--<label>-->
+                                              <!--<input type="checkbox">-->Selection 3:
+                                            <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
+                                          <%= f.text_field :selection_3, :class => "form-control input-lg", :id => "inputLarge"%>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                              <input type="checkbox">Selection 4:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary" type="button"><i class="mdi-content-add"></i>Add new selection</button>
+
+                                    <!--<button class="btn btn-primary" type="button" onclick="javascript:addNewSelection();"><i class="mdi-content-add"></i>Add new selection</button>-->
+
+				    <script language="javascript">
+				        var selectionMax = 9;
+				        var selectionNum = 3;
+				        var addNewSelection = function(){
+				            if(selectionNum < selectionMax){
+				                selectionNum++;
+				                var selectionElement = document.getElementById("selection_checkboxes");
+								        
+				                var domNewRow = document.createElement("div");
+				                domNewRow.className = "row";
+										        
+					        var domNewCheckbox = document.createElement("div");
+					        domNewCheckbox.className = "checkbox col-md-3 none-margin-top";
+					        /*
+                                                var domCheckboxLabel = document.createElement("label");
+					        domCheckboxLabel.innerHTML = "Selection " + selectionNum + ":";
+                                                 */
+						domNewCheckbox.innerHTML = "Selection " + selectionNum + ":";
+						//domNewCheckbox.appendChild(domCheckboxLabel);
+										        
+						var domNewInputTxt = document.createElement("div");
+						domNewInputTxt.className = "form-group col-md-9";
+						domNewInputTxt.innerHTML = "<input class='form-control input-lg' id='inputLarge' name='quiz[selection_" + selectionNum + "]' type='text' value='' />";
+						      
+						domNewRow.appendChild(domNewCheckbox);
+						domNewRow.appendChild(domNewInputTxt);
+						selectionElement.appendChild(domNewRow);
+                                                console.log("sss");
+		                            }
+                                        }
+				    </script>
+                                </div>
+                                <div>
+				      <button class="btn btn-primary" type="button" onclick="javascript:addNewSelection();"><i class="mdi-content-add"></i>Add new selection</button>
                                 </div>
                             </div>
                             <div class="divider"></div>
@@ -245,14 +303,23 @@
                                      <%= f.text_field :answer, :class => "form-control", :rows => "3", :id => "textArea" %>
                                 </div>
                             </div>
+                            <div class="point row" style="padding: 15px;">
+                                <div class="checkbox col-md-2 none-margin-top">
+                                    <label>
+                                        Points:
+                                    </label>
+                                </div>
+                                <div class="col-md-10">
+                                    <%= f.text_field :point, :class => "form-control", :rows => "3", :id => "textArea" %>
+                                </div>
+                            </div>
+                            <% if user_signed_in? %>
+                                <%= f.hidden_field :user_id, :value => current_user.id %>
+                            <% end %>
                             <%= f.submit :class => "btn btn-primary", :style => "float: right" %>
-                        </form>
+                        </div>
                     <% end %>
                 </div>
             </div>
         </div>
     </div>
-
-</body>
-
-</html>

@@ -7,11 +7,10 @@
 #  |____/ \___/ \___|_|\___/   \__\_\\__,_|_/___|  #
 #                                                  #
 ==================================================== 
-Socio Quiz is a quiz service platfrom for all people 
-who love quiz. The platfrom provides quizing services 
-with many exciting quiz that has generating by all of
-you. 
-
+For all who want to check and challenge their knowledge 
+in all aspects of social life, Socio-Quiz is a huge quiz 
+platform with many exciting quizzes. Unlike other ads 
+system, our product can provide exciting quiz format ads.
 ```
 
 
