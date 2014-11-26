@@ -94,11 +94,19 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu">
-<!--
-
--->
-
-                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: 0</li>
+                        <% total_score = 0 %>
+                        <% printf("controller_name: %s action_name: %s\r\n", controller.controller_name, controller.action_name) %>
+                        <% if current_page?(controller: 'users/registrations', action: 'edit') %>
+                        <% else %>
+                           <% if @quiz_plays != nil %>
+                              <% @quiz_plays.each do |play| %>
+                                 <% total_score += play.score.to_i %>
+                                 <% printf("score: %d\r\n", play.score.to_i) %>
+                              <% end %>
+                              <li style="padding: 3px 20px; font-size: 16px;">Total Points: <%= total_score %></li>
+                           <% end %>
+                        <% end %>
+                        <% printf("id: %d\r\n" , current_user.id) %>
                         <li>
                             <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>

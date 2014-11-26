@@ -4,29 +4,38 @@ class QuizzesController < ApplicationController
   before_action :set_category
   before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
+  #@quiz_plays = Play.where(user_id: current_user.id)
+
   # GET /quizzes
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
+    if user_signed_in?
+       @quiz_plays = Play.where(user_id: current_user.id)
+    end
   end
 
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+#    @quiz_plays = Play.where(user_id: current_user.id)
   end
 
   # GET /quizzes/new
   def new
     @quiz = Quiz.new
+    @quiz_plays = Play.where(user_id: current_user.id)
   end
 
   # GET /quizzes/1/edit
   def edit
+    @quiz_plays = Play.where(user_id: current_user.id)
   end
 
   # POST /quizzes
   # POST /quizzes.json
   def create
+    @quiz_plays = Play.where(user_id: current_user.id)
     # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
     if params[:quiz][:point].to_s.length != 0
     else
@@ -58,6 +67,7 @@ class QuizzesController < ApplicationController
   end
 
   def respond
+    @quiz_plays = Play.where(user_id: current_user.id)
     @quiz = Quiz.find(params[:play][:quiz_id])
     if user_signed_in?
       if @quiz.answer == params[:play][:reply]
@@ -77,6 +87,7 @@ class QuizzesController < ApplicationController
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
   def update
+    @quiz_plays = Play.where(user_id: current_user.id)
     # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
     if params[:quiz][:point].to_s.length != 0
     else
@@ -104,6 +115,7 @@ class QuizzesController < ApplicationController
   # DELETE /quizzes/1
   # DELETE /quizzes/1.json
   def destroy
+    @quiz_plays = Play.where(user_id: current_user.id)
     @quiz.destroy
     respond_to do |format|
       format.html { redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.' }
@@ -114,10 +126,16 @@ class QuizzesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
+      if user_signed_in?
+         @quiz_plays = Play.where(user_id: current_user.id)
+      end
       @quiz = Quiz.find(params[:id])
     end
 
     def set_category
+      if user_signed_in?
+         @quiz_plays = Play.where(user_id: current_user.id)
+      end
       @category = Category.all
     end
 
