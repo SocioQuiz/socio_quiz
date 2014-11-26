@@ -94,7 +94,14 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu">
-                        <li style="padding: 3px 20px; font-size: 16px;">Total Point: 0</li>
+                        <% total_score = 0 %>
+                        <% @plays.each do |play| %>
+                          <% if play.quiz %>
+                            <% total_score += play.score.to_i %>
+                          <% end %>
+                        <% end %>
+
+                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: <%= total_score %></li>
                         <li>
                             <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>

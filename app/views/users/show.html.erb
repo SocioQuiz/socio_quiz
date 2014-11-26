@@ -1,40 +1,46 @@
 <div class="container" style="margin-top: 100px;">
-<p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-<h1>
-<% if current_user.name %>
-  <%= current_user.name %>
-<% else %>
-  <%= current_user.email %>
-<% end %>
-'s Profile
-</h1>
-<h2>Activity Log</h2>
-<table class="table">
-<thead>
-<tr>
-  <th>ID</th>
-  <th>Question</th>
-  <th>Answer</th>
-  <th>Your Answer</th>
-  <th>Score</th>
-</tr>
-</thead>
-<tbody>
-<% @plays.each do |play| %>
-  <% if play.quiz %>
-    <tr>
-      <td><%= play.quiz_id %></td>
-      <td><%= play.quiz.question %></td>
-      <td><%= play.quiz.answer %></td>
-      <td><%= play.reply %></td>
-      <td><%= play.score %></td>
-    </tr>
+  <p id="notice"><%= notice %></p>
+  <% if user_signed_in? %>
+  <h1>
+  <% if current_user.name %>
+    <%= current_user.name %>
+  <% else %>
+    <%= current_user.email %>
   <% end %>
-<% end %>
-</tbody>
-</table>
-<% else %>
-Please signin
-<% end %>
+  's Profile
+  </h1>
+  <h2>Activity Log</h2>
+  <table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Your Answer</th>
+    <th>Score</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% total_score = 0 %>
+  <% @plays.each do |play| %>
+    <% if play.quiz %>
+      <tr>
+        <td><%= play.quiz_id %></td>
+        <td><%= play.quiz.question %></td>
+        <td><%= play.quiz.answer %></td>
+        <td><%= play.reply %></td>
+        <td><%= play.score %></td>
+        <% total_score += play.score.to_i %>
+      </tr>
+    <% end %>
+  <% end %>
+    <tr>
+      <td colspan=4>Total points:</td>
+      <td><%= total_score %></td>
+    </tr>
+  </tbody>
+  </table>
+  <% else %>
+    Please signin
+  <% end %>
 </div>
