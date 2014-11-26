@@ -134,11 +134,6 @@ class QuizzesController < ApplicationController
 
     def set_category
       @category = Category.all
-      #if user_signed_in?
-      if current_user != nil
-         @quiz_plays = Play.where(user_id: current_user.id)
-      end
-      #@category = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
