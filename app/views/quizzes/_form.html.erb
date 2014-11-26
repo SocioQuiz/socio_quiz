@@ -107,30 +107,15 @@
                                             <div class="">
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="quiz[type]" id="Multiple-choice" value="1" checked="" type="radio">Multiple choice
+                                                        <%= f.radio_button :type, '1', :checked => true %>Multiple Choice
                                                     </label>
                                                 </div>
-                                                <div class="radio radio-primary">
+                                               <div class="radio radio-primary">
                                                     <label>
-                                                        <input name="quiz[type]" id="Checkboxes" value="2" type="radio">Checkboxes
+                                                        <%= f.radio_button :type, '2' %>Fill in the blank
                                                     </label>
                                                 </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="quiz[type]" id="True-False" value="3" type="radio">True / False
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="quiz[type]" id="Fill-in-the-blank" value="4" type="radio">Fill in the blank
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <input name="quiz[type]" id="Matching" value="5" type="radio">Matching
-                                                    </label>
-                                                </div>
-                                            </div>
+                                           </div>
                                         </div>
                                     </div>
                                     <div class="category">
@@ -139,7 +124,6 @@
                                             <div class="">
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <!--<%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>-->
                                                         <input name="quiz[category_id]" id="Entertainment" value="1" checked="" type="radio">Entertainment
                                                     </label>
                                                 </div>
