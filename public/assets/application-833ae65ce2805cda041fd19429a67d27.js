@@ -10770,6 +10770,28 @@ window.ripples={init:function(a){"use strict";function b(a,b){var c=a.matches||a
 
 }).call(this);
 (function() {
+  this.Play = (function() {
+    function Play() {}
+
+    Play.showScore = function(userid) {
+      return $.ajax("/users/" + userid + ".json", {
+        type: 'GET',
+        dataType: 'json',
+        error: function(jqXHR, textStatus, errorThrown) {
+          return $('.sq-totalscore').html("0");
+        },
+        success: function(data, textStatus, jqXHR) {
+          return $('.sq-totalscore').html("" + data.totalScore);
+        }
+      });
+    };
+
+    return Play;
+
+  })();
+
+}).call(this);
+(function() {
 
 
 }).call(this);

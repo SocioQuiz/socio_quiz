@@ -17,7 +17,7 @@ deploy:
     - rake db:migrate:status
     - rake db:migrate
     - rake db:migrate:status
-    - rake assets:precompile
+#    - rake assets:precompile
     - restart
 #    - "bundle exec --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment rake cleanup"
   on:
