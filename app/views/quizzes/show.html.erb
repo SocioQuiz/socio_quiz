@@ -6,12 +6,19 @@
   <%= @quiz.question %>
 </p>
         <% if user_signed_in? %>
-            <% if current_user.id != @quiz.user_id %>  
-            <% else %>
+            <% if current_user.permission == "admin" %>
                 <p>
                 <strong>Answer:</strong>
                 <%= @quiz.answer %>
                 </p>
+            <% else %>
+                <% if current_user.id != @quiz.user_id %>  
+                <% else %>
+                    <p>
+                    <strong>Answer:</strong>
+                    <%= @quiz.answer %>
+                    </p>
+                <% end %>
             <% end %>
         <% end %>
  
