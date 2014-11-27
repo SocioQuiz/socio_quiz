@@ -30,13 +30,12 @@
         <td><%= play.quiz.answer %></td>
         <td><%= play.reply %></td>
         <td><%= play.score.to_i %></td>
-        <% total_score += play.score.to_i %>
       </tr>
     <% end %>
   <% end %>
     <tr>
       <td colspan=4>Total points:</td>
-      <td><%= total_score %></td>
+      <td><%= @totalScore.to_s %></td>
     </tr>
   </tbody>
   </table>
