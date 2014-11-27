@@ -98,7 +98,7 @@
 
 -->
 
-                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: 0</li>
+                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: <span class="sq-totalscore">0</span></li>
                         <li>
                             <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>
@@ -149,7 +149,11 @@
 -->
 <!-- CONTENT WARPPER & CONTAINER -->
 <%= yield %>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      Play.showScore(<%= current_user.id %>);      
+    });
+    </script>
 </body>
 </html>
