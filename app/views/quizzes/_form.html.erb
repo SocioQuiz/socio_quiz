@@ -207,7 +207,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="divider"></div>
+                            <div class="answer divider"></div>
                             <div class="answer" style="padding: 15px;">
                                 <legend>Selection</legend>
                                 <div class="answer_true_false" style="display: none">
@@ -263,10 +263,10 @@
 				            if(selectionNum < selectionMax){
 				                selectionNum++;
 				                var selectionElement = document.getElementById("selection_checkboxes");
-								        
+
 				                var domNewRow = document.createElement("div");
 				                domNewRow.className = "row";
-										        
+
 					        var domNewCheckbox = document.createElement("div");
 					        domNewCheckbox.className = "checkbox col-md-3 none-margin-top";
 					        /*
@@ -275,11 +275,11 @@
                                                  */
 						domNewCheckbox.innerHTML = "Selection " + selectionNum + ":";
 						//domNewCheckbox.appendChild(domCheckboxLabel);
-										        
+
 						var domNewInputTxt = document.createElement("div");
 						domNewInputTxt.className = "form-group col-md-9";
 						domNewInputTxt.innerHTML = "<input class='form-control input-lg' id='inputLarge' name='quiz[selection_" + selectionNum + "]' type='text' value='' />";
-						      
+
 						domNewRow.appendChild(domNewCheckbox);
 						domNewRow.appendChild(domNewInputTxt);
 						selectionElement.appendChild(domNewRow);
