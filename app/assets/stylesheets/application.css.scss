@@ -10,13 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap-sprockets
- *= require bootstrap
+ *= require_self
+ *= require_tree .
  *= require bootstrap-material-design
  *= require font-awesome
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 .centered {
     position: fixed;
@@ -59,4 +60,3 @@ div.divider {
 .none-margin-top {
         margin-top: 0;
 }
-
