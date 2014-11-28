@@ -10,9 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-sprockets
+ *= require bootstrap
+ *= require bootstrap-material-design
+ *= require font-awesome
  *= require_tree .
  *= require_self
- *= require bootstrap-material-design
  */
 
 .centered {

@@ -3,6 +3,7 @@
 <head>
   <title>SocioQuiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <!-- Optional theme -->
@@ -10,9 +11,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <!-- Latest compiled and minified JavaScript -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+=======
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+>>>>>>> quit cdn
   <%= csrf_meta_tags %>
-
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <!-- HEADER UI -->
@@ -150,7 +153,6 @@
 -->
 <!-- CONTENT WARPPER & CONTAINER -->
 <%= yield %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
     $(document).ready(function(){
       <% if user_signed_in? %>

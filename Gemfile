@@ -64,3 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bootstrap-material-design'
 #gem 'rails-assets-bootstrap-material-design'
 gem 'font-awesome-sass'
+
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'
+
