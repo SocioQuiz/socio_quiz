@@ -155,6 +155,7 @@
     $(document).ready(function(){
       <% if user_signed_in? %>
       Play.showScore(<%= current_user.id %>);
+      Quiz.switchQuizType();
       <% end %>
     });
     </script>
