@@ -13,11 +13,12 @@
  *= require_self
  *= require_tree .
  *= require bootstrap-material-design
- *= require font-awesome
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .centered {
     position: fixed;
