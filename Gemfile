@@ -62,5 +62,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 #using bootstrap materials design. Read more: https://github.com/FezVrasta/bootstrap-material-design
 gem 'bootstrap-material-design'
-#gem 'rails-assets-bootstrap-material-design'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.2.0'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'

@@ -5,12 +5,23 @@
   <strong>Question:</strong>
   <%= @quiz.question %>
 </p>
-
-<p>
-  <strong>Answer:</strong>
-  <%= @quiz.answer %>
-</p>
-
+        <% if user_signed_in? %>
+            <% if current_user.permission == "admin" %>
+                <p>
+                <strong>Answer:</strong>
+                <%= @quiz.answer %>
+                </p>
+            <% else %>
+                <% if current_user.id != @quiz.user_id %>  
+                <% else %>
+                    <p>
+                    <strong>Answer:</strong>
+                    <%= @quiz.answer %>
+                    </p>
+                <% end %>
+            <% end %>
+        <% end %>
+ 
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
 </div>

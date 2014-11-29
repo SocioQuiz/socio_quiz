@@ -2,16 +2,10 @@
 <html>
 <head>
   <title>SocioQuiz</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <!-- Optional theme -->
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
-  <!-- Latest compiled and minified JavaScript -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <!-- HEADER UI -->
@@ -22,7 +16,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:void(0)">Logo SocioQuiz</a>
+            <%= link_to 'Logo SocioQuiz', root_path, :class => "navbar-brand" %>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
@@ -98,7 +92,7 @@
 
 -->
 
-                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: 0</li>
+                        <li style="padding: 3px 20px; font-size: 16px;">Total Points: <span class="sq-totalscore">0</span></li>
                         <li>
                             <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>
@@ -123,33 +117,16 @@
             </ul>
         </div>
     </div>
-
-<!-- OLD -->
-<!--
-<p class="navbar-text pull-right">
-<%= link_to 'SocioQuiz', root_path %> |
-<% if user_signed_in? %>
-  <strong><%= current_user.email %></strong> |
-  <%= link_to "Profile", current_user %> |
-  <% if current_user.profileimage? %>
-     <img src=<%= current_user.profileimage %>>
-  <% end %>
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <div id="status" style="border: 1px solid"></div>
-<% else %>
-  <%= link_to "Sign up for SocioQuiz", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %> |
-  <%= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook), :class => 'navbar-link' %> |
-  <%= link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter), :class => 'navbar-link' %> |
-  <%= link_to "Sign in with google+", user_omniauth_authorize_path(:google_oauth2), :class => 'navbar-link' %> |
-
-<% end %>
-</p>
--->
 <!-- CONTENT WARPPER & CONTAINER -->
 <%= yield %>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $.material.init();
+        <% if user_signed_in? %>
+      Play.showScore(<%= current_user.id %>);
+      Quiz.switchQuizType();
+      <% end %>
+    });
+    </script>
 </body>
 </html>

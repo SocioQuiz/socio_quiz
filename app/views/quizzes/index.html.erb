@@ -1,7 +1,5 @@
-
-
 <div class="container"  style="margin-top: 100px;">
-    
+
     <div class="well col-md-12">
         <h1><center>Quizzes</center></h1>
         <table class="table table-bordered">
@@ -13,24 +11,30 @@
                 </tr>
             </thead>
             <tbody>
+                <% listQuizNum = 0 %>
                 <% @quizzes.each do |quiz| %>
                 <tr>
                     <td><%= quiz.question %></td>
                     <td>
-                      <% if quiz.user %>
-                        <% if quiz.user.name? %>
-                          <%= quiz.user.name %>
-                        <% else %>
-                          <%= quiz.user.email %>
+                        <% if quiz.user %>
+                          <% if quiz.user.name? %>
+                              <%= quiz.user.name %>
+                          <% else %>
+                              <%= quiz.user.email %>
+                          <% end %>
                         <% end %>
-                      <% end %>
                     </td>
+                    <% listQuizNum = listQuizNum.to_i+1 %>
                     <td>
+                    <% if user_signed_in? %>
 
-                        <a data-toggle="modal" data-target="#view-quizz" >
+                    <% printf("permission: %s\r\n", current_user.permission) %>
+                    <% if current_user.permission == "admin" %>
+                        <!-- Begin show btn -->
+                        <a data-toggle="modal" data-target="#view-quizz-<%= listQuizNum.to_s %>" >
                             <i class="mdi-action-visibility"></i>
                         </a>
-                        <div class="modal fade" id="view-quizz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="view-quizz-<%= listQuizNum.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -40,7 +44,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="portlet">                                                 
+                                                <div class="portlet">
                                                     <div class="form-body">
                                                         <div class="form-group">
                                                             <label for=" ">Question:</label>
@@ -62,17 +66,17 @@
                                                               <% end %>
                                                             <% end %>
                                                         </div>
-                                                       
+
                                                         <div class="form-group">
                                                             <label for=" ">Type quiz:</label>
                                                             <span>...</span>
-                                                           
-                                                        </div>                             
+
+                                                        </div>
                                                          <div class="form-group">
                                                             <label for=" ">Topic:</label>
                                                             <span>...</span>
-                                                          
-                                                        </div>   
+
+                                                        </div>
                                                         <div class="modal-footer">
                                                             <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                                                         </div>
@@ -84,21 +88,126 @@
                                 </div>
                             </div>
                         </div>
-                        <% if user_signed_in? %>
-                            <a style="padding-left: 5px; padding-right: 5px;">
-                                <%= link_to '<i class="mdi-av-play-arrow"></i>'.html_safe, play_quiz_path(quiz) %>
-                            </a>
-                            
-                            <a style="padding-left: 5px; padding-right: 5px;">
-                                <%= link_to '<i class="mdi-editor-mode-edit"></i>'.html_safe, edit_quiz_path(quiz) %>
-                            </a>
+                        <!-- End show btn -->
 
+
+
+
+                        <!-- Begin play btn -->
+                            <%= link_to '<i class="mdi-av-play-arrow"></i>'.html_safe, play_quiz_path(quiz), :style => 'padding-left: 5px; padding-right: 5px;' %>
+                        <!-- End play btn -->
+
+                        <!-- Begin edit btn -->
+                            <%= link_to '<i class="mdi-editor-mode-edit"></i>'.html_safe, edit_quiz_path(quiz), :style => 'padding-left: 5px; padding-right: 5px;' %>
+                        <!-- End edit btn -->
+
+                        <!-- Begin destroy btn -->
                             <%= link_to '<i class="mdi-action-delete" ></i>'.html_safe,
                                 quiz,
                                 method: :delete,
                                 data: { confirm: "Are you sure?"
-                            } %> 
-                        <% end %> 
+                            } %>
+                        <!-- End destroy btn -->
+
+
+                    <% else %>
+                        <% if current_user.id != quiz.user_id %>
+                        <!-- Begin play btn -->
+                            <%= link_to '<i class="mdi-av-play-arrow"></i>'.html_safe, play_quiz_path(quiz), :style => 'padding-left: 5px; padding-right: 5px;' %>
+                        <!-- End play btn -->
+
+                        <% else %>
+                        <!-- Begin show btn -->
+                        <a data-toggle="modal" data-target="#view-quizz-<%= listQuizNum.to_s %>" >
+                            <i class="mdi-action-visibility"></i>
+                        </a>
+                        <div class="modal fade" id="view-quizz-<%= listQuizNum.to_s %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Quiz Detail</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="portlet">
+                                                    <div class="form-body">
+                                                        <div class="form-group">
+                                                            <label for=" ">Question:</label>
+                                                            <span><%= quiz.question %></span>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for=" ">Answer:</label>
+                                                            <span><%= quiz.answer %></span>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for=" ">Created by:</label>
+                                                            <% if quiz.user %>
+                                                              <% if quiz.user.name? %>
+                                                                <span><%= quiz.user.name %></span>
+                                                              <% else %>
+                                                                <span><%= quiz.user.email %></span>
+                                                              <% end %>
+                                                            <% end %>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for=" ">Type quiz:</label>
+                                                            <span>...</span>
+
+                                                        </div>
+                                                         <div class="form-group">
+                                                            <label for=" ">Topic:</label>
+                                                            <span>...</span>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End show btn -->
+
+                        <!-- Begin edit btn -->
+                            <%= link_to '<i class="mdi-editor-mode-edit"></i>'.html_safe, edit_quiz_path(quiz), :style => 'padding-left: 5px; padding-right: 5px;' %>
+                        <!-- End edit btn -->
+
+                        <!-- Begin destroy btn -->
+                            <%= link_to '<i class="mdi-action-delete" ></i>'.html_safe,
+                                quiz,
+                                method: :delete,
+                                data: { confirm: "Are you sure?"
+                            } %>
+                        <!-- End destroy btn -->
+
+                        <% end %>
+                    <% end %>
+
+<!-- OLD List UI
+            <% if current_user.permission == "admin" %>
+                <%= link_to 'Play', play_quiz_path(quiz), :class => "btn btn-default active" %>
+                <%= link_to 'Edit', edit_quiz_path(quiz), :class=>"btn btn-default active" %>
+                <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger active" %>
+
+            <% else %>
+                <% if current_user.id != quiz.user_id %>
+                    <%= link_to 'Play', play_quiz_path(quiz), :class => "btn btn-default active" %>
+                <% else %>
+                    <%= link_to 'Edit', edit_quiz_path(quiz), :class=>"btn btn-default active" %>
+                    <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger active" %>
+                <% end %>
+            <% end %>
+-->
+                    <% end %>
                     </td>
                 </tr>
                 <% end %>
@@ -106,12 +215,11 @@
         </table>
         <br>
 
+
         <% if user_signed_in? %>
-            <%= link_to '<button type="button" class="btn btn-default">
-                  <span class="mdi-content-add"></span> New Question
-                </button>'.html_safe, new_quiz_path %>
+      <%= link_to "<span class=\"mdi-content-add\"></span>create new quiz".html_safe, new_quiz_path, :class => 'btn btn-default withripple' %>
+
         <% end %>
+
     </div>
 </div>
-
-

@@ -207,7 +207,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="divider"></div>
+                            <div class="answer divider"></div>
                             <div class="answer" style="padding: 15px;">
                                 <legend>Selection</legend>
                                 <div class="answer_true_false" style="display: none">
@@ -223,50 +223,70 @@
                                     </div>
                                 </div>
                                 <div class="answer_checkboxes" id="selection_checkboxes">
+                                    <%
+                                    selectionNum = 0 
+                                    defaultReversedNum = 1
+                                    quizSelections = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9] 
+                                    notNilIndexMax = 0
+                                    quizSelections.each do |selection|
+                                        selectionNum = selectionNum.to_i + 1
+                                        if selection != nil && selectionNum.to_i >= notNilIndexMax.to_i
+                                            notNilIndexMax = selectionNum.to_i
+                                        end
+                                    end
+                                    selectionNum = 0
+                                    printf("notNilIndexMax: %s\r\n", notNilIndexMax)
+
+                                    quizSelections.each do |selection| 
+                                         selectionNum = selectionNum.to_i + 1
+                                         if selectionNum <= 3 && selection == nil
+                                                 defaultReversedNum = defaultReversedNum.to_i - 1
+                                         end
+                                         printf("selection_%s: %s \r\n", selectionNum, selection)
+                                    %>
                                     <div class="row">
                                         <div class="checkbox col-md-3 none-margin-top">
                                             <!--<label>-->
-                                              <!--<input type="checkbox">-->Selection 1:
+                                              <!--<input type="checkbox">-->Selection <%= selectionNum %>:
                                             <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_1, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <!--<label>-->
-                                              <!--<input type="checkbox">-->Selection 2:
-                                            <!--</label>-->
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_2, :class => "form-control input-lg", :id => "inputLarge"%>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <!--<label>-->
-                                              <!--<input type="checkbox">-->Selection 3:
-                                            <!--</label>-->
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                          <%= f.text_field :selection_3, :class => "form-control input-lg", :id => "inputLarge"%>
+                                    <% 
+                                         if selection == nil 
+                                             selection = ""
+                                         end
+                                    %>
+                                          <input class="form-control input-lg" id="inputLarge" name="quiz[selection_<%= selectionNum %>]" type="text" value="<%= selection %>" />
                                         </div>
                                     </div>
 
-                                    <!--<button class="btn btn-primary" type="button" onclick="javascript:addNewSelection();"><i class="mdi-content-add"></i>Add new selection</button>-->
+                                    <%
+                                        if selectionNum.to_i >= notNilIndexMax.to_i
+                                            break
+                                        end
+                                    end
+                                    printf("defaultReversedNum: %s\r\n", defaultReversedNum)
+                                    %>
 
 				    <script language="javascript">
 				        var selectionMax = 9;
-				        var selectionNum = 3;
+                                        <%
+                                        if notNilIndexMax.to_i < 1
+                                        %>
+                                        var selectionNum = 1;
+                                        <% else %>
+                                        var selectionNum = <%= notNilIndexMax.to_i %>;
+                                        <%    
+                                        end
+                                        %>
 				        var addNewSelection = function(){
 				            if(selectionNum < selectionMax){
 				                selectionNum++;
 				                var selectionElement = document.getElementById("selection_checkboxes");
-								        
+
 				                var domNewRow = document.createElement("div");
 				                domNewRow.className = "row";
-										        
+
 					        var domNewCheckbox = document.createElement("div");
 					        domNewCheckbox.className = "checkbox col-md-3 none-margin-top";
 					        /*
@@ -275,14 +295,15 @@
                                                  */
 						domNewCheckbox.innerHTML = "Selection " + selectionNum + ":";
 						//domNewCheckbox.appendChild(domCheckboxLabel);
-										        
+
 						var domNewInputTxt = document.createElement("div");
 						domNewInputTxt.className = "form-group col-md-9";
 						domNewInputTxt.innerHTML = "<input class='form-control input-lg' id='inputLarge' name='quiz[selection_" + selectionNum + "]' type='text' value='' />";
-						      
+
 						domNewRow.appendChild(domNewCheckbox);
 						domNewRow.appendChild(domNewInputTxt);
 						selectionElement.appendChild(domNewRow);
+                                                $.material.init();
                                                 console.log("sss");
 		                            }
                                         }

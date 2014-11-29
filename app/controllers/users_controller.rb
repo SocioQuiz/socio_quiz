@@ -3,9 +3,13 @@ class UsersController < ApplicationController
 
   def show
     @plays = Play.where(user_id: current_user.id)
+    @totalScore = 0
+    @plays.each do |play|
+      @totalScore += play.score.to_i
+    end
     respond_to do |format|
         format.html # show.html.erb
-        format.json { render :json => @plays }
+        format.json # show.json.jbuilder
     end
   end
 end
