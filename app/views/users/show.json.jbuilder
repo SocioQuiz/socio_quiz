@@ -1,3 +1,4 @@
 json.data @plays
-json.totalScore @totalScore
+json.totalScore @totalscore
 json.playCount @plays.length
+json.accurateRate @accuraterate
