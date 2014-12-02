@@ -62,11 +62,26 @@
                 </div>
                 <div class="col-md-9" style="border-left: 2px solid red;">
                 	<p id="notice"><%= notice %></p>
-
+                    <%
+                        answerChoiceNum = 0
+                        defaultReversedNum = 1
+                        answerChoices = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9]
+                        disNilIdxMax = 0
+                        # get the available selectional answer choices.
+                        answerChoices.each do |answerChoice|
+                            answerChoiceNum = answerChoiceNum.to_i + 1
+                            if answerChoice != nil && answerChoice != "" && answerChoiceNum.to_i >= disNilIdxMax.to_i
+                                disNilIdxMax = answerChoiceNum.to_i
+                            end
+                        end
+                    %>
                     <ul class="nav nav-tabs" style="margin-bottom: 15px;">
                         <li class="active"><a href="#textbox" data-toggle="tab">Fill in the blank</a></li>
+                    <% if disNilIdxMax.to_i > 0 %>
                         <li><a href="#multiple-choice" data-toggle="tab">Multiple choice</a></li>
+                    <% end %>
                     </ul>
+
                     <div id="myTabContent" class="tab-content">
                     	<div class="tab-pane fade active in" id="textbox">
 							<%= form_for @play, url: { action: 'respond' } do |f| %>
@@ -95,77 +110,70 @@
 							<% end %>
                         </div>
 
+                        <% if disNilIdxMax.to_i > 0 %>
                         <div class="tab-pane fade " id="multiple-choice">
-                            <div class="question">
-                                <legend>Question</legend>
-                                <div>
-                                    <textarea class="form-control" rows="3" id="textArea" placeholder="Please enter question here ..."></textarea>
-                                </div>
-                               
-                            </div>
-                            <div class="divider"></div>
-                            <div class="answer" style="padding: 15px;">
-                                <legend>Answer</legend>
-                                <div class="answer_true_false" style="display: none">
-                                    <div class="radio radio-primary">
-                                        <label>
-                                            <input name="answer" id="true" value="option1"  checked="" type="radio">True
-                                        </label>
-                                    </div>
-                                    <div class="radio radio-primary">
-                                        <label>
-                                            <input name="answer" id="false" value="option2" type="radio">False
-                                        </label>
+                            <%= form_for @play, url: { action: 'respond' } do |f| %>
+                                <div class="question">
+                                    <legend>Question</legend>
+                                    <div>
+                                        <%= @quiz.question %>
                                     </div>
                                 </div>
-                                <div class="answer_checkboxes">
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
+                                <div class="divider"></div>
+
+                                <div class="answer" style="padding: 15px;">
+                                    <legend>Answer</legend>
+                                    <div class="answer_true_false" style="display: none">
+                                        <div class="radio radio-primary">
                                             <label>
-                                                <input type="checkbox">Answer 1:
+                                                <input name="answer" id="true" value="option1"  checked="" type="radio">True
                                             </label>
                                         </div>
-                                        <div class="form-group col-md-9">
-                                            <input class="form-control input-lg" id="inputLarge" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
+                                        <div class="radio radio-primary">
                                             <label>
-                                                <input type="checkbox">Answer 2:
+                                                <input name="answer" id="false" value="option2" type="radio">False
                                             </label>
                                         </div>
-                                        <div class="form-group col-md-9">
-                                            <input class="form-control input-lg" id="inputLarge" type="text">
-                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                                <input type="checkbox">Answer 3:
-                                            </label>
+                                    <div class="answer_checkboxes">
+                                    <% 
+                                        # Create the answer choices selections
+                                        printf("disNilIdxMax: %s\r\n", disNilIdxMax)
+                                        i = 0
+                                        while i < disNilIdxMax.to_i
+                                            printf("play.selection_%d: %s\r\n", i, answerChoices[i])
+                                        %>
+                                        <div class="row">
+                                            <div class="radio radio-primary">
+                                                <label>
+<% printf("play.reply\r\n") %>
+                                                    <input name="play[reply]" id="false" value="<%= answerChoices[i] %>" type="radio">Answer <%= (i + 1) %>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><u><%= answerChoices[i] %></u></strong>
+                                                </label>
+                                                <%= f.hidden_field :quiz_id %>
+                                            </div>
+
+                                            <!--<div class="checkbox col-md-3 none-margin-top">
+                                                <label>
+                                                    <input type="checkbox">Answer <%= (i + 1) %>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><u><%= answerChoices[i] %></u></strong>
+                                                </label>
+                                            </div>
+                                            <div class="form-group col-md-9">
+                                                <input class="form-control input-lg" id="inputLarge" name="play[reply]" type="hidden" />
+                                            </div>-->
                                         </div>
-                                        <div class="form-group col-md-9">
-                                            <input class="form-control input-lg" id="inputLarge" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="checkbox col-md-3 none-margin-top">
-                                            <label>
-                                                <input type="checkbox">Answer 4:
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                            <input class="form-control input-lg" id="inputLarge" type="text">
-                                        </div>
-                                    </div>
-                                    
+                                        <%
+                                            i = i + 1
+                                        end 
+                                        
+                                    %>
+                                        <%= f.hidden_field :quiz_id %>
                                 </div>
                             </div>
                             <div class="divider"></div>
-                           
-                            <button class="btn btn-primary" type="button" style="float: right;">Submit</button>
+                            <%= f.submit :class => "btn btn-primary", :style => "float: right" , :value => "Submit"%>
+                        <% end %> 
                         </div>
+                        <% end %>
                     </div>
                 </div>
             </div>
