@@ -124,7 +124,7 @@ class QuizzesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html {redirect_to quizzes_url, alert: 'You don\'t have quiz\'s delete permission.'}
+        format.html {redirect_to quizzes_url, alert: 'You don\'t have permission for deleting the quiz.'}
         format.json { head :no_content }
       end
     end
