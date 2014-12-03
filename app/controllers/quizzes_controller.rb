@@ -77,7 +77,7 @@ class QuizzesController < ApplicationController
           @play.save
           redirect_to quizzes_url, notice: 'incorrect'
         else
-          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+          redirect_to quizzes_url, alert: 'You don\'t have permission for playing the quiz.'
         end
       end
     end
@@ -120,6 +120,11 @@ class QuizzesController < ApplicationController
       @quiz.destroy
       respond_to do |format|
         format.html { redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html {redirect_to quizzes_url, alert: 'You don\'t have quiz\'s delete permission.'}
         format.json { head :no_content }
       end
     end
