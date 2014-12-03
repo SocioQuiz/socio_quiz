@@ -124,6 +124,7 @@
                                                 # Create category choices.
                                                 categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
                                                 categoriesMapped.each do |m|
+                                                    if m[0].to_s != "no category"
                                                 %>
                                                 <div class="radio radio-primary">
                                                     <label>
@@ -131,7 +132,9 @@
                                                         <%= m[2] %>
                                                     </label>
                                                 </div>
-                                                <% end %>
+                                                <%
+                                                    end
+                                                end %>
                                             </div>
                                         </div>
                                     </div>
