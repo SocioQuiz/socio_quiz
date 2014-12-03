@@ -3,13 +3,16 @@ class UsersController < ApplicationController
 
   def show
     @plays = Play.where(user_id: current_user.id)
-    @totalScore = 0
+    @totalscore = 0
+    correctcount = 0
     @plays.each do |play|
-      @totalScore += play.score.to_i
+      @totalscore += play.score.to_i
+      correctcount += 1 if play.correct == true
     end
+    @accuraterate = correctcount.to_f / @plays.count
     respond_to do |format|
-        format.html # show.html.erb
-        format.json # show.json.jbuilder
+      format.html # show.html.erb
+      format.json # show.json.jbuilder
     end
   end
 end

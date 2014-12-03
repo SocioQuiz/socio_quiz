@@ -121,12 +121,12 @@
 <%= yield %>
     <script>
         $(document).ready(function(){
-        $.material.init();
-        <% if user_signed_in? %>
-      Play.showScore(<%= current_user.id %>);
-      Quiz.switchQuizType();
-      <% end %>
-    });
+          $.material.init();
+          <% if user_signed_in? %>
+            Play.showScore(<%= current_user.id %>);
+            Quiz.switchQuizType();
+          <% end %>
+        });
     </script>
 </body>
 </html>
