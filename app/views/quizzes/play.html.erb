@@ -10,7 +10,7 @@
                                     <div class="">
                                           <%
                                           # Create category choices.
-                                          categoriesMapped = @category.map{|t| [t.name, t.id]}
+                                          categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
                                           categoriesMapped.each do |m|
                                              isMatched = (m[1].to_i == @quiz.category_id.to_i)
                                              if isMatched
@@ -19,7 +19,7 @@
                                               <label>
                                                   <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" checked="<%= ((isMatched == true)?'true':'false') %>" />
                                                   <!--<input name="quiz[category_id]" id="Sport" value="2" type="radio">-->
-                                                  <%= m[0] %>
+                                                  <%= m[2] %>
                                               </label>
                                           </div>
                                           <%
