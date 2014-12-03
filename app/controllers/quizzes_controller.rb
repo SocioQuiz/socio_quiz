@@ -64,21 +64,21 @@ class QuizzesController < ApplicationController
       if @quiz.answer == params[:play][:reply]
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: true, score: @quiz.point
-#        if @quiz.id == current_user.id || current_user.permission == "admin"
+        if @quiz.user_id != current_user.id || current_user.permission == "admin"
           @play.save
           redirect_to quizzes_url, notice: 'correct'
-#        else
-#          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
-#        end
+        else
+          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+        end
       else
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: false, score: 0
-#        if @quiz.id == current_user.id || current_user.permission == "admin"
+        if @quiz.user_id != current_user.id || current_user.permission == "admin"
           @play.save
           redirect_to quizzes_url, notice: 'incorrect'
-#        else
-#          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
-#        end
+        else
+          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+        end
       end
     end
   end
