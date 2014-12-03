@@ -63,13 +63,21 @@ class QuizzesController < ApplicationController
       if @quiz.answer == params[:play][:reply]
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: true, score: @quiz.point
-        @play.save
-        redirect_to quizzes_url, notice: 'correct'
+        if @quiz.user_id == current_user.id || current_user.permission == "admin"
+          @play.save
+          redirect_to quizzes_url, notice: 'correct'
+        else
+          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+        end
       else
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: false, score: 0
-        @play.save
-        redirect_to quizzes_url, notice: 'incorrect'
+        if @quiz.user_id == current_user.id || current_user.permission == "admin"
+          @play.save
+          redirect_to quizzes_url, notice: 'incorrect'
+        else
+          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+        end
       end
     end
   end
@@ -77,26 +85,28 @@ class QuizzesController < ApplicationController
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
   def update
-    # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
-    if params[:quiz][:point].to_s.length != 0
-    else
-       params[:quiz][:point] = "0"
-    end
-
-    respond_to do |format|
-      # Strong parameters are question and answer. User should be input these two params.
-      if params[:quiz][:question].to_s.length != 0 && params[:quiz][:answer].to_s.length != 0
-        if @quiz.update(quiz_params)
-          format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
-          format.json { render :show, status: :ok, location: @quiz }
-        else
-          format.html { render :edit }
-          format.json { render json: @quiz.errors, status: :unprocessable_entity }
-        end
+    if @quiz.user_id == current_user.id || current_user.permission == "admin"
+      # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
+      if params[:quiz][:point].to_s.length != 0
       else
-          format.html { render :edit }
-          format.json { render json: @quiz.errors, status: :unprocessable_entity }
+         params[:quiz][:point] = "0"
+      end
 
+      respond_to do |format|
+        # Strong parameters are question and answer. User should be input these two params.
+        if params[:quiz][:question].to_s.length != 0 && params[:quiz][:answer].to_s.length != 0
+          if @quiz.update(quiz_params)
+            format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
+            format.json { render :show, status: :ok, location: @quiz }
+          else
+            format.html { render :edit }
+            format.json { render json: @quiz.errors, status: :unprocessable_entity }
+          end
+        else
+            format.html { render :edit }
+            format.json { render json: @quiz.errors, status: :unprocessable_entity }
+
+        end
       end
     end
   end
@@ -104,10 +114,13 @@ class QuizzesController < ApplicationController
   # DELETE /quizzes/1
   # DELETE /quizzes/1.json
   def destroy
-    @quiz.destroy
-    respond_to do |format|
-      format.html { redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.' }
-      format.json { head :no_content }
+    # Assign quiz destroy's permission to admin and created quiz of user's owner 
+    if @quiz.user_id == current_user.id || current_user.permission == "admin"
+      @quiz.destroy
+      respond_to do |format|
+        format.html { redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
