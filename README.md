@@ -12,7 +12,7 @@ love to check, share and challenge their knowledge
 in all aspects of their social life. It is unlike 
 other advertisement system because our product can 
 provide exciting quiz format and advertistment 
-together by all of you.
+together via all of you.
 ```
 
 
