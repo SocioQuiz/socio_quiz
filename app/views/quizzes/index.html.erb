@@ -26,8 +26,21 @@
                           <% end %>
                         <% end %>
                     </td>
-                    <% listQuizNum = listQuizNum.to_i+1 %>                    
-                    <% if user_signed_in? %>
+                    <%
+                       listQuizNum = listQuizNum.to_i + 1 
+                       # Signin user's session 
+                       if user_signed_in? 
+                            # Get the category datasets from categories model    
+                            viewCategory = nil
+                            categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
+
+                            categoriesMapped.each do |m|
+                                if m[1].to_i == quiz.category_id.to_i
+                                    viewCategory = m
+                                    break;
+                                end
+                            end
+                    %>
                     <td>
 
                     <% printf("permission: %s\r\n", current_user.permission) %>
@@ -76,7 +89,7 @@
                                                         </div>
                                                          <div class="form-group">
                                                             <label for=" ">Topic:</label>
-                                                            <span>...</span>
+                                                            <span><%= viewCategory[2] %></span>
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -163,7 +176,7 @@
                                                         </div>
                                                          <div class="form-group">
                                                             <label for=" ">Topic:</label>
-                                                            <span>...</span>
+                                                            <span><%= viewCategory[2] %></span>
 
                                                         </div>
                                                         <div class="modal-footer">
