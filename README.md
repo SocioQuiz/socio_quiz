@@ -7,10 +7,12 @@
 #  |____/ \___/ \___|_|\___/   \__\_\\__,_|_/___|  #
 #                                                  #
 ==================================================== 
-For all who want to check and challenge their knowledge 
-in all aspects of social life, Socio-Quiz is a huge quiz 
-platform with many exciting quizzes. Unlike other ads 
-system, our product can provide exciting quiz format ads.
+SocioQuiz is a huge quiz platform for all people who
+love to check, share and challenge their knowledge 
+in all aspects of their social life. It is unlike 
+other advertisement system because our product can 
+provide exciting quiz format and advertistment 
+together by all of you.
 ```
 
 
