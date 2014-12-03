@@ -60,24 +60,25 @@ class QuizzesController < ApplicationController
   def respond
     @quiz = Quiz.find(params[:play][:quiz_id])
     if user_signed_in?
+    #printf("play respond:\r\n @quiz.id:%s\r\n @quiz.user_id:%s\r\n current_user.id:%s\r\n", @quiz.id, @quiz.user_id, current_user.id)
       if @quiz.answer == params[:play][:reply]
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: true, score: @quiz.point
-        if @quiz.user_id == current_user.id || current_user.permission == "admin"
+#        if @quiz.id == current_user.id || current_user.permission == "admin"
           @play.save
           redirect_to quizzes_url, notice: 'correct'
-        else
-          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
-        end
+#        else
+#          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+#        end
       else
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: false, score: 0
-        if @quiz.user_id == current_user.id || current_user.permission == "admin"
+#        if @quiz.id == current_user.id || current_user.permission == "admin"
           @play.save
           redirect_to quizzes_url, notice: 'incorrect'
-        else
-          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
-        end
+#        else
+#          redirect_to quizzes_url, notice: 'You don\'t have permission for playing the quiz.'
+#        end
       end
     end
   end
