@@ -7,7 +7,9 @@
                 <tr>
                     <th>Question</th>
                     <th>Created by</th>
+                <% if user_signed_in? %>
                     <th>Option</th>
+                <% end %>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +26,9 @@
                           <% end %>
                         <% end %>
                     </td>
-                    <% listQuizNum = listQuizNum.to_i+1 %>
-                    <td>
+                    <% listQuizNum = listQuizNum.to_i+1 %>                    
                     <% if user_signed_in? %>
+                    <td>
 
                     <% printf("permission: %s\r\n", current_user.permission) %>
                     <% if current_user.permission == "admin" %>
@@ -207,8 +209,8 @@
                 <% end %>
             <% end %>
 -->
-                    <% end %>
                     </td>
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
