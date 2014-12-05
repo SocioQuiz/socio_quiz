@@ -119,70 +119,20 @@
                                         <div class="form-group">
                                             <label class="control-label">Category</label>
                                             <div class="">
+
+                                                <%
+                                                # Create category choices.
+                                                categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
+                                                categoriesMapped.each do |m|
+                                                %>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <!--<%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>-->
-                                                        <%= f.radio_button :category_id, '1', :id => 'Entertainment', :checked => true %>
-                                                        <!--<input name="quiz[category_id]" id="Entertainment" value="1" checked="" type="radio">-->
-                                                        Entertainment
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '2', :id => 'Sport' %>
+                                                        <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" checked="<%= ((m[1].to_i == @quiz.category_id.to_i)?'true':'false') %>" />
                                                         <!--<input name="quiz[category_id]" id="Sport" value="2" type="radio">-->
-                                                        Sport
+                                                        <%= m[2] %>
                                                     </label>
                                                 </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '3', :id => 'TV-Movies' %>
-                                                        <!--<input name="quiz[category_id]" id="TV-Movies" value="3" type="radio">-->
-                                                        TV & Movies
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '4', :id => 'Music' %>
-                                                        <!--<input name="quiz[category_id]" id="Music" value="4" type="radio">-->
-                                                        Music
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '5', :id => 'Food-Drink' %>
-                                                        <!--<input name="quiz[category_id]" id="Food-Drink" value="5" type="radio">-->
-                                                        Food & Drink
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '6', :id => 'Geography' %>
-                                                        <!--<input name="quiz[category_id]" id="Geography" value="6" type="radio">-->
-                                                        Geography
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '7', :id => 'General-Knowledge' %>
-                                                        <!--<input name="quiz[category_id]" id="General-Knowledge" value="7" type="radio">-->
-                                                        General Knowledge
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '8', :id => 'History' %>
-                                                        <!--<input name="quiz[category_id]" id="History" value="8" type="radio">-->
-                                                        History
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-primary">
-                                                    <label>
-                                                        <%= f.radio_button :category_id, '9', :id => 'Science-Nature' %>
-                                                        <!--<input name="quiz[category_id]" id="Science-Nature" value="9" type="radio">-->
-                                                        Science and Nature
-                                                    </label>
-                                                </div>
+                                                <% end %>
                                             </div>
                                         </div>
                                     </div>

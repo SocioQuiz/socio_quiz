@@ -8,51 +8,24 @@
                                 <div class="form-group">
                                     <label class="control-label">Category</label>
                                     <div class="">
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Entertainment" value="option1" checked="" type="radio">Entertainment
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Sport" value="option2" type="radio">Sport
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="TV-Movies" value="option2" type="radio">TV & Movies
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Music" value="option2" type="radio">Music
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Food-Drink" value="option2" type="radio">Food & Drink
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Geography" value="option2" type="radio">Geography
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="General-Knowledge" value="option2" type="radio">General Knowledge
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="History" value="option2" type="radio">History
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-primary">
-                                            <label>
-                                                <input name="category" id="Science-Nature" value="option2" type="radio">Science and Nature
-                                            </label>
-                                        </div>
+                                          <%
+                                          # Create category choices.
+                                          categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
+                                          categoriesMapped.each do |m|
+                                             isMatched = (m[1].to_i == @quiz.category_id.to_i)
+                                             if isMatched
+                                          %>
+                                          <div class="radio radio-primary">
+                                              <label>
+                                                  <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" checked="<%= ((isMatched == true)?'true':'false') %>" />
+                                                  <!--<input name="quiz[category_id]" id="Sport" value="2" type="radio">-->
+                                                  <%= m[2] %>
+                                              </label>
+                                          </div>
+                                          <%
+                                             end 
+                                          end
+                                          %>
                                     </div>
                                 </div>
                             </div>
