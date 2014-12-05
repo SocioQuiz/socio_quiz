@@ -119,7 +119,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Category</label>
                                             <div class="">
-
+ 
                                                 <%
                                                 # Create category choices.
                                                 categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
@@ -128,13 +128,14 @@
                                                 %>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" checked="<%= ((m[1].to_i == @quiz.category_id.to_i) ? 'true' : 'false') %>" />
+                                                        <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" <%= ((m[1].to_i == @quiz.category_id.to_i) ? 'checked="checked"' : ' ') %> />
                                                         <%= m[2] %>
                                                     </label>
                                                 </div>
                                                 <%
                                                     end
-                                                end %>
+                                                end 
+                                                %>
                                             </div>
                                         </div>
                                     </div>
