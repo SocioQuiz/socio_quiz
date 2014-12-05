@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   respond_to :html, :xml
 
   def index
-    if user_signed_in? && current_user.permission == "admin"
+    if current_user.permission == "admin"
       @categories = Category.all
     end
       respond_with(@categories)
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    if user_signed_in? && current_user.permission == "admin"
+    if current_user.permission == "admin"
       @category = Category.new(category_params)
       @category.save
     end
@@ -31,14 +31,16 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if user_signed_in? && current_user.permission == "admin"
+    if current_user.permission == "admin"
       @category.update(category_params)
       respond_with(@category)
     end
   end
 
   def destroy
-    @category.destroy
+    if current_user.permission == "admin"
+      @category.destroy
+    end
     respond_with(@category)
   end
 
