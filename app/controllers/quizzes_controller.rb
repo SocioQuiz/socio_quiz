@@ -28,10 +28,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
-    if params[:quiz][:point].to_s.length != 0
-    else
-       params[:quiz][:point] = "0"
-    end
+    params[:quiz][:point] = (params[:quiz][:point].to_s.length == 0)?"0":params[:quiz][:point]
 
     @quiz = Quiz.new(quiz_params)
 
@@ -50,7 +47,6 @@ class QuizzesController < ApplicationController
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def play
@@ -88,10 +84,7 @@ class QuizzesController < ApplicationController
   def update
     if @quiz.user_id == current_user.id || current_user.permission == "admin"
       # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
-      if params[:quiz][:point].to_s.length != 0
-      else
-         params[:quiz][:point] = "0"
-      end
+      params[:quiz][:point] = (params[:quiz][:point].to_s.length == 0)?"0":params[:quiz][:point]
 
       respond_to do |format|
         # Strong parameters are question and answer. User should be input these two params.
@@ -106,7 +99,6 @@ class QuizzesController < ApplicationController
         else
             format.html { render :edit }
             format.json { render json: @quiz.errors, status: :unprocessable_entity }
-
         end
       end
     end
