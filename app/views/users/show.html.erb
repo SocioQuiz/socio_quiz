@@ -1,45 +1,77 @@
-<div class="container" style="margin-top: 100px;">
-  <p id="notice"><%= notice %></p>
-  <% if user_signed_in? %>
-  <h1>
-  <% if current_user.name %>
-    <%= current_user.name %>
-  <% else %>
-    <%= current_user.email %>
-  <% end %>
-  's Profile
-  </h1>
-  <h2>Activity Log</h2>
-  <table class="table">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Question</th>
-    <th>Answer</th>
-    <th>Your Answer</th>
-    <th>Score</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% total_score = 0 %>
-  <% @plays.each do |play| %>
-    <% if play.quiz %>
-      <tr>
-        <td><%= play.quiz_id %></td>
-        <td><%= play.quiz.question %></td>
-        <td><%= play.quiz.answer %></td>
-        <td><%= play.reply %></td>
-        <td><%= play.score.to_i %></td>
-      </tr>
-    <% end %>
-  <% end %>
-    <tr>
-      <td colspan=4>Total points:</td>
-      <td><%= @totalscore.to_s %></td>
-    </tr>
-  </tbody>
-  </table>
-  <% else %>
-    Please signin
-  <% end %>
-</div>
+<!Doctype html>
+<html>
+<head></head>
+<body>
+  <div class="container"  style="margin-top: 100px;">
+    <p id="notice"><%= notice %></p>
+    <div class="well col-md-12">
+      <% if user_signed_in? %>
+          <center>
+            <h1>
+              <% if current_user.name %>
+                <%= current_user.name %>
+              <% else %>
+                <%= current_user.email %>
+              <% end %>
+                's Activity Log
+            </h1>
+            <div id="total-points">
+              <div id="user-id" style="display:none;"><%= current_user.id %></div>
+              Total points:<%= @totalscore.to_s %>
+            </div>
+          </center>
+         
+        <center>
+          <canvas id="myChart" width = "450" height="450"></canvas> 
+        </center>
+        
+      <% else %>
+      Please signin
+      <% end %>
+    </div>
+  </div>
+  <script>
+  
+
+  var myData =[
+    {
+      quiz_id: 1,
+      score: 2
+    },
+    {
+      quiz_id: 2,
+      score: 5
+    },
+    {
+      quiz_id: 3,
+      score: 4
+    }
+  ];
+
+  
+  var labelJ = new Array();
+  var dataJ = new Array();
+  for(var i = 0; i < myData.length; i++){
+    labelJ.push('Q' + myData[i].quiz_id);
+    dataJ.push(myData[i].score);
+  }
+
+  dataChart = {
+    labels :labelJ,
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : dataJ
+      }
+    ]
+  };
+
+  
+  var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(dataChart);
+ 
+  </script>
+</body>
+</html>
