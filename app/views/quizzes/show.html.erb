@@ -37,11 +37,11 @@
                             end
 
                             # Mapped the choosed category choice.
-                            categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
+                            categoriesMapped = @category.map{|t| [t.name, t.id, t.description, t.value]}
                             categoryDataset = nil
-                            categoriesMapped.each do |m|
-                                if m[1].to_i == @quiz.category_id.to_i && m[0].to_s != "no category"
-                                    categoryDataset = m
+                            categoriesMapped.each do |dataset|
+                                if dataset[1].to_i == @quiz.category_id.to_i && dataset[0].to_s != "no category"
+                                    categoryDataset = dataset
                                     break;
                                 end
                             end
@@ -58,7 +58,7 @@
                         %>
                         <tr>
                             <td align="right"><strong>Quiz topic:</strong></td>
-                            <td>&nbsp;<%= categoryDataset[2] %></td>
+                            <td>&nbsp;<%= categoryDataset[3] %></td>
                         </tr>
                             <% end %>
                         <tr>
