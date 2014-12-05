@@ -1,27 +1,71 @@
-<div class="container" style="margin-top: 100px;">
-<p id="notice"><%= notice %></p>
+    <div class="container"  style="margin-top: 100px;">
+        <div class="well col-md-12">
+          <h1>
+              <center>
+              	Your quiz
+              </center>
+          </h1>
 
-<p>
-  <strong>Question:</strong>
-  <%= @quiz.question %>
-</p>
-        <% if user_signed_in? %>
-            <% if current_user.permission == "admin" %>
-                <p>
-                <strong>Answer:</strong>
-                <%= @quiz.answer %>
-                </p>
-            <% else %>
-                <% if current_user.id != @quiz.user_id %>  
-                <% else %>
-                    <p>
-                    <strong>Answer:</strong>
-                    <%= @quiz.answer %>
-                    </p>
-                <% end %>
-            <% end %>
-        <% end %>
- 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
-</div>
+
+          <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2" align="center">
+                                <div align="center">Quiz's details</div>
+                            </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="18%" align="right"><strong>Your Question:</strong></td>
+                            <td width="82%">&nbsp;<%= @quiz.question %></td>
+                        </tr>
+                    
+                    <% if user_signed_in? %>
+                        <% 
+                        if current_user.id == @quiz.user_id || current_user.permission == "admin"
+                            answerChoiceNum = 0
+                            answerChoices = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9]
+                            disNilIdxMax = 0
+                            # get the available selectionable answer choices.
+                            answerChoices.each do |answerChoice|
+                                answerChoiceNum = answerChoiceNum.to_i + 1
+                                if answerChoice != nil && answerChoice != "" && answerChoiceNum.to_i >= disNilIdxMax.to_i
+                                    disNilIdxMax = answerChoiceNum.to_i
+                                end
+                            end
+                            printf("disNilIdxMax: %s\r\n", disNilIdxMax)
+                        %>
+                        <tr>
+                            <td align="right"><strong>Your Answer:</strong></td>
+                            <td>&nbsp;<%= @quiz.answer %></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><strong>The quiz's points:</strong></td>
+                            <td>&nbsp;<%= @quiz.point %></td>
+                        </tr>
+                            <% if disNilIdxMax.to_i > 0 %>
+						<tr>
+                            <td align="right"><strong>Quiz's answer choice:</strong></td>
+                            <td>
+                            <%
+                            	i = 0
+                                while i < disNilIdxMax.to_i
+                            %>
+                               <div>Answer <%= (i + 1) %>: &nbsp;<%= answerChoices[i] %></div> 
+                            <%
+                            		i = i + 1
+                            	end
+                            %>
+                            </td>
+                        </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                    <% end %>
+              </table>
+        </div>
+        
+        <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+        <%= link_to 'Back', quizzes_path %>
+    </div>
