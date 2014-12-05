@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -65,3 +65,6 @@ gem 'bootstrap-material-design'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
+
+#using chart.js for Rails. Read more:https://github.com/coderbydesign/chart-js-rails
+gem 'chart-js-rails'
