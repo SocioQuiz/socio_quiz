@@ -22,37 +22,58 @@
                         </tr>
                     
                     <% if user_signed_in? %>
-                        <% 
+                        <%
+                        # Allow admin and own's quiz to see the answer and any details. 
                         if current_user.id == @quiz.user_id || current_user.permission == "admin"
                             answerChoiceNum = 0
                             answerChoices = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9]
                             disNilIdxMax = 0
-                            # get the available selectionable answer choices.
+                            # Get the available selectionable answer choices.
                             answerChoices.each do |answerChoice|
                                 answerChoiceNum = answerChoiceNum.to_i + 1
                                 if answerChoice != nil && answerChoice != "" && answerChoiceNum.to_i >= disNilIdxMax.to_i
                                     disNilIdxMax = answerChoiceNum.to_i
                                 end
                             end
-                            printf("disNilIdxMax: %s\r\n", disNilIdxMax)
+
+                            # Mapped the choosed category choice.
+                            categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
+                            categoryDataset = nil
+                            categoriesMapped.each do |m|
+                                if m[1].to_i == @quiz.category_id.to_i && m[0].to_s != "no category"
+                                    categoryDataset = m
+                                    break;
+                                end
+                            end
                         %>
+
                         <tr>
                             <td align="right"><strong>Your Answer:</strong></td>
                             <td>&nbsp;<%= @quiz.answer %></td>
                         </tr>
+                            
+                        <%
+                            # We do not show the nil category dataset. 
+                            if categoryDataset != nil
+                        %>
+                        <tr>
+                            <td align="right"><strong>Quiz topic:</strong></td>
+                            <td>&nbsp;<%= categoryDataset[2] %></td>
+                        </tr>
+                            <% end %>
                         <tr>
                             <td align="right"><strong>The quiz's points:</strong></td>
                             <td>&nbsp;<%= @quiz.point %></td>
                         </tr>
                             <% if disNilIdxMax.to_i > 0 %>
-						<tr>
+			<tr>
                             <td align="right"><strong>Quiz's answer choice:</strong></td>
                             <td>
                             <%
                             	i = 0
                                 while i < disNilIdxMax.to_i
                             %>
-                               <div>Answer <%= (i + 1) %>: &nbsp;<%= answerChoices[i] %></div> 
+                               <div><strong>Answer <%= (i + 1) %>:</strong> &nbsp;<%= answerChoices[i] %></div> 
                             <%
                             		i = i + 1
                             	end
