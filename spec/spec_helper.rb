@@ -75,5 +75,5 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
-  config.filter_run_excluding : broken => true
+  config.filter_run_excluding :broken => true
 end
