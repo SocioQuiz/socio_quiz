@@ -27,46 +27,30 @@
     </div>
   </div>
   <script>
-  
 
-  var myData =[
-  <% @plays.each do |play| %>
-    <% if play.quiz %>
-        {
-        quiz_id: <%= play.quiz_id %>,
-        score: <%= play.score.to_i %>
-        },
-    <% else %>
-        {
-        quiz_id: 0,
-        score: 0
-        }
-    <% end %>
-  <% end %>
-  ];
-
-  
   var labelJ = new Array();
   var dataJ = new Array();
-  for(var i = 0; i < myData.length; i++){
-    labelJ.push('Q' + myData[i].quiz_id);
-    dataJ.push(myData[i].score);
-  }
+  var url = '/users/' + $('#user-id').text() + '.json';
 
-  dataChart = {
-    labels :labelJ,
-    datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : dataJ
-      }
-    ]
-  };
+  $.getJSON(url, function(json){
+    for(var i = 0; i < json.data.length; i++){
+      labelJ.push('Q' + json.data[i].id);
+      dataJ.push(json.data[i].score);
+    }
+    dataChart = {
+      labels :labelJ,
+      datasets : [
+        {
+          fillColor : "rgba(151,187,205,0.5)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          data : dataJ
+        }
+      ]
+    };
+    var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(dataChart);
+  });
 
-  
-  var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(dataChart);
  
   </script>
