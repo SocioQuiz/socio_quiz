@@ -36,13 +36,12 @@
         quiz_id: <%= play.quiz_id %>
         score: <%= play.score.to_i %>
         },
-    <% else %>
-        {
-          quiz_id: 0
-          score: 0
-        },
     <% end %>
   <% end %>
+    {
+      quiz_id: 0
+      score: 0
+    }
   ];
 
   
