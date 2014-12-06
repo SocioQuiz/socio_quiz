@@ -30,18 +30,19 @@
   
 
   var myData =[
-    {
-      quiz_id: 1,
-      score: 2
-    },
-    {
-      quiz_id: 2,
-      score: 5
-    },
-    {
-      quiz_id: 3,
-      score: 4
-    }
+  <% @plays.each do |play| %>
+    <% if play.quiz %>
+        {
+        quiz_id: <%= play.quiz_id %>
+        score: <%= play.score.to_i %>
+        },
+    <% else %>
+        {
+          quiz_id: 0
+          score: 0
+        },
+    <% end %>
+  <% end %>
   ];
 
   
