@@ -119,7 +119,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Category</label>
                                             <div class="">
- 
+
                                                 <%
                                                 # Create category choices.
                                                 categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
@@ -129,12 +129,12 @@
                                                 <div class="radio radio-primary">
                                                     <label>
                                                         <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" <%= ((m[1].to_i == @quiz.category_id.to_i) ? 'checked="checked"' : ' ') %> />
-                                                        <%= m[2] %>
+                                                        <%= m[0] %>
                                                     </label>
                                                 </div>
                                                 <%
                                                     end
-                                                end 
+                                                end
                                                 %>
                                             </div>
                                         </div>
@@ -177,9 +177,9 @@
                                 </div>
                                 <div class="answer_checkboxes" id="selection_checkboxes">
                                     <%
-                                    selectionNum = 0 
+                                    selectionNum = 0
                                     defaultReversedNum = 1
-                                    quizSelections = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9] 
+                                    quizSelections = [@quiz.selection_1, @quiz.selection_2, @quiz.selection_3, @quiz.selection_4, @quiz.selection_5, @quiz.selection_6, @quiz.selection_7, @quiz.selection_8, @quiz.selection_9]
                                     notNilIndexMax = 0
                                     quizSelections.each do |selection|
                                         selectionNum = selectionNum.to_i + 1
@@ -190,7 +190,7 @@
                                     selectionNum = 0
                                     printf("notNilIndexMax: %s\r\n", notNilIndexMax)
 
-                                    quizSelections.each do |selection| 
+                                    quizSelections.each do |selection|
                                          selectionNum = selectionNum.to_i + 1
                                          if selectionNum <= 3 && selection == nil
                                                  defaultReversedNum = defaultReversedNum.to_i - 1
@@ -204,8 +204,8 @@
                                             <!--</label>-->
                                         </div>
                                         <div class="form-group col-md-9">
-                                    <% 
-                                         if selection == nil 
+                                    <%
+                                         if selection == nil
                                              selection = ""
                                          end
                                     %>
@@ -229,7 +229,7 @@
                                         var selectionNum = 1;
                                         <% else %>
                                         var selectionNum = <%= notNilIndexMax.to_i %>;
-                                        <%    
+                                        <%
                                         end
                                         %>
 				        var addNewSelection = function(){
