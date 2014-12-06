@@ -38,7 +38,7 @@
       dataJ.push(json.data[i].score);
     }
     dataChart = {
-      labels :labelJ,
+      labels : labelJ,
       datasets : [
         {
           fillColor : "rgba(151,187,205,0.5)",
@@ -49,7 +49,7 @@
         }
       ]
     };
-    var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(dataChart);
+    var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(dataChart, {bezierCurve: false});
   });
 
  
