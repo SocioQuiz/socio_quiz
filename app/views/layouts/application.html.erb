@@ -92,6 +92,11 @@
                     <ul class="dropdown-menu">
 
                         <li style="padding: 3px 20px; font-size: 16px;">Total Points: <span class="sq-totalscore">0</span></li>
+                        <% if current_user.permission == "admin" %>
+                        <li>
+                            <%= link_to 'Quizzes categories management', categories_path %>
+                        </li>
+                        <% end %>
                         <li>
                             <%= link_to "Edit Profile", edit_user_registration_path %>
                         </li>

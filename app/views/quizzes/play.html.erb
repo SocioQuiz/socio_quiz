@@ -10,15 +10,15 @@
                                     <div class="">
                                           <%
                                           # Create category choices.
-                                          categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
-                                          categoriesMapped.each do |m|
-                                             isMatched = (m[1].to_i == @quiz.category_id.to_i)
+                                          categoriesMapped = @category.map{|t| [t.name, t.id, t.description, t.value]}
+                                          categoriesMapped.each do |dataset|
+                                             isMatched = (dataset[1].to_i == @quiz.category_id.to_i)
                                              if isMatched
                                           %>
                                           <div class="radio radio-primary">
                                               <label>
-                                                  <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" checked="<%= ((isMatched == true) ? 'true' : 'false') %>" />
-                                                  <%= m[2] %>
+                                                  <input id="<%= dataset[0] %>" name="quiz[category_id]" type="radio" value="<%= dataset[1] %>" checked="<%= ((isMatched == true) ? 'true' : 'false') %>" />
+                                                  <%= dataset[3] %>
                                               </label>
                                           </div>
                                           <%

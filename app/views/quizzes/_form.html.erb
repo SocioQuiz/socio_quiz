@@ -1,81 +1,3 @@
-<!--
-<div>
-<%= form_for(@quiz) do |f| %>
-  <% if @quiz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
-      <ul>
-      <% @quiz.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :question %><br>
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :answer %><br>
-    <%= f.text_field :answer %>
-  </div>
-  <div>
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id, @category.map{|t| [t.name, t.id]} %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_1 %><br>
-    <%= f.text_field :selection_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_2 %><br>
-    <%= f.text_field :selection_2 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_3 %><br>
-    <%= f.text_field :selection_3 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_4 %><br>
-    <%= f.text_field :selection_4 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_5 %><br>
-    <%= f.text_field :selection_5 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_6 %><br>
-    <%= f.text_field :selection_6 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_7 %><br>
-    <%= f.text_field :selection_7 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_8 %><br>
-    <%= f.text_field :selection_8 %>
-  </div>
-  <div class="field">
-    <%= f.label :selection_9 %><br>
-    <%= f.text_field :selection_9 %>
-  </div>
-  <div class="field">
-    <%= f.label :point %><br>
-    <%= f.text_field :point %>
-  </div>
-  <% if user_signed_in? %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-</div>
--->
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -122,14 +44,18 @@
 
                                                 <%
                                                 # Create category choices.
-                                                categoriesMapped = @category.map{|t| [t.name, t.id, t.description]}
-                                                categoriesMapped.each do |m|
-                                                    if m[0].to_s != "no category"
+                                                categoriesMapped = @category.map{|t| [t.name, t.id, t.description, t.value]}
+                                                categoriesMapped.each do |database|
+                                                    input_id = database[0]
+                                                    input_value = database[1]
+                                                    input_text = database[3]
+
+                                                    if database[0].to_s != "no category"
                                                 %>
                                                 <div class="radio radio-primary">
                                                     <label>
-                                                        <input id="<%= m[0] %>" name="quiz[category_id]" type="radio" value="<%= m[1] %>" <%= ((m[1].to_i == @quiz.category_id.to_i) ? 'checked="checked"' : ' ') %> />
-                                                        <%= m[0] %>
+                                                        <input id="<%= input_id %>" name="quiz[category_id]" type="radio" value="<%= input_value %>" <%= ((input_value.to_i == @quiz.category_id.to_i) ? 'checked="checked"' : ' ') %> />
+                                                        <%= input_text %>
                                                     </label>
                                                 </div>
                                                 <%

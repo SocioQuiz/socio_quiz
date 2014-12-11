@@ -1,3 +1,4 @@
+<% if user_signed_in? && current_user.permission == "admin" %>
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -12,14 +13,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <label for="category_name">Category name [input's id]</label><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <label for="category_value">Category text [input's text]</label><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <label for="category_description">Category descriptions [Decription of category detail]</label><br>
     <%= f.text_area :description %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>
