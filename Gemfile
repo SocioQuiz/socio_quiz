@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '~> 4.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', group: :production
@@ -44,7 +44,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 2.0.0'
 
 # Multi-Language
 gem 'multi_formal_i18n_tenancy'

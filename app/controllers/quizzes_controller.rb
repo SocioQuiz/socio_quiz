@@ -28,7 +28,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     # Auto adjust the quiz's point(quiz's score) when the user leave it blank.
-    params[:quiz][:point] = (params[:quiz][:point].to_s.length == 0)?"0":params[:quiz][:point]
+    params[:quiz][:point] = (params[:quiz][:point].to_s.length == 0) ? '0' : params[:quiz][:point]
 
     @quiz = Quiz.new(quiz_params)
 
@@ -56,7 +56,6 @@ class QuizzesController < ApplicationController
   def respond
     @quiz = Quiz.find(params[:play][:quiz_id])
     if user_signed_in?
-    #printf("play respond:\r\n @quiz.id:%s\r\n @quiz.user_id:%s\r\n current_user.id:%s\r\n", @quiz.id, @quiz.user_id, current_user.id)
       if @quiz.answer == params[:play][:reply]
         @play = Play.new user_id: current_user.id, quiz_id: params[:play][:quiz_id],
                          reply: params[:play][:reply], correct: true, score: @quiz.point
@@ -107,7 +106,7 @@ class QuizzesController < ApplicationController
   # DELETE /quizzes/1
   # DELETE /quizzes/1.json
   def destroy
-    # Assign quiz destroy's permission to admin and created quiz of user's owner 
+    # Assign quiz destroy's permission to admin and created quiz of user's owner
     if @quiz.user_id == current_user.id || current_user.permission == "admin"
       @quiz.destroy
       respond_to do |format|
@@ -134,7 +133,7 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      
+
       params.require(:quiz).permit(:question, :answer, :user_id, :category_id, :type, :selection_1, :selection_2, :selection_3, :selection_4, :selection_5, :selection_6, :selection_7, :selection_8, :selection_9, :point)
     end
 end
