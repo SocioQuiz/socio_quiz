@@ -1,7 +1,7 @@
 module Api
   module V1
     class QuizzesController < BaseController
-      doorkeeper_for :all, except: :index
+      before_action :doorkeeper_authorize!, except: [:index]
       before_action :set_quiz, only: [:answer]
 
       # GET /quizzes
